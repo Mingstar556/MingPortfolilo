@@ -1,0 +1,138 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-grid-color: rgba(10, 37, 64, 0.05);
+    --yellow-accent: #f59e0b;
+    --navy-primary: #0a2540;
+    --navy-dark: #07192c;
+  }
+
+  html {
+    scroll-behavior: auto; /* Managed by Lenis */
+  }
+
+  body {
+    background-color: #fbfcfd;
+    color: #0a2540;
+    overflow-x: hidden;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+/* Background Graph Grid matching the PDF Canva design */
+.bg-graph-grid {
+  background-image: 
+    linear-gradient(to right, var(--bg-grid-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--bg-grid-color) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.bg-graph-grid-dense {
+  background-image: 
+    linear-gradient(to right, rgba(10, 37, 64, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(10, 37, 64, 0.035) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Lenis Recommended CSS */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Keyframe animations */
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(2deg);
+  }
+}
+
+@keyframes pulseRing {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-float {
+  animation: floatSlow 4s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: floatSlow 5s ease-in-out 1.5s infinite;
+}
+
+.animate-pulse-ring {
+  animation: pulseRing 2.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+/* Star sparkle 4-point shape */
+.sparkle-star {
+  clip-path: polygon(
+    50% 0%,
+    62% 38%,
+    100% 50%,
+    62% 62%,
+    50% 100%,
+    38% 62%,
+    0% 50%,
+    38% 38%
+  );
+}
+
+/* Dot pattern generator helper */
+.dot-pattern {
+  background-image: radial-gradient(#0a2540 2px, transparent 2px);
+  background-size: 16px 16px;
+}
