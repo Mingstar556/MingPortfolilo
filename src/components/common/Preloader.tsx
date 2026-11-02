@@ -8,24 +8,40 @@ export default function Preloader({ onComplete }: { onComplete?: () => void }) {
   const [isRemoved, setIsRemoved] = useState(false);
 
   useEffect(() => {
+    if (
+      typeof window !== "undefined" &&
+      (window.location.search.includes("nopreload") ||
+        window.location.hash.includes("nopreload") ||
+        sessionStorage.getItem("has_seen_preloader") ||
+        navigator.webdriver)
+    ) {
+      setIsLoaded(true);
+      setIsRemoved(true);
+      if (onComplete) onComplete();
+      return;
+    }
+
     const interval = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) {
           clearInterval(interval);
+          try {
+            sessionStorage.setItem("has_seen_preloader", "true");
+          } catch {}
           setTimeout(() => {
             setIsLoaded(true);
             setTimeout(() => {
               setIsRemoved(true);
               if (onComplete) onComplete();
-            }, 600);
-          }, 200);
+            }, 400);
+          }, 100);
           return 100;
         }
-        // Organic easing speed
-        const increment = Math.max(1, Math.floor(Math.random() * 8) + 2);
+        // Fast, snappy preloader progression
+        const increment = Math.max(4, Math.floor(Math.random() * 12) + 6);
         return Math.min(100, prev + increment);
       });
-    }, 28);
+    }, 20);
 
     return () => clearInterval(interval);
   }, [onComplete]);

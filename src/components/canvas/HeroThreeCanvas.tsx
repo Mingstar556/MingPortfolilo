@@ -29,7 +29,7 @@ export default function HeroThreeCanvas() {
       powerPreference: "high-performance",
     });
     renderer.setSize(width, height);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.25));
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.2;
     container.appendChild(renderer.domElement);
@@ -100,39 +100,52 @@ export default function HeroThreeCanvas() {
       roughness: 0.15,
     });
 
-    // 5. Create Star Meshes
-    const starShapeBig = createStarShape(1.8, 0.45);
+    // 5. Create Refined 3D Star Meshes
+    const starShapeBig = createStarShape(1.4, 0.36);
     const starGeomBig = new THREE.ExtrudeGeometry(starShapeBig, extrudeSettings);
 
-    const starShapeSmall = createStarShape(1.1, 0.28);
+    const starShapeSmall = createStarShape(0.85, 0.22);
     const starGeomSmall = new THREE.ExtrudeGeometry(starShapeSmall, extrudeSettings);
 
-    // Star 1: Large Gold Star (Top Right of Hero)
+    // Star 1: Majestic Gold Star (Upper Right - framing character cleanly)
     const star1 = new THREE.Mesh(starGeomBig, goldMaterial);
-    star1.position.set(7.5, 4.5, 0);
+    star1.position.set(5.2, 3.5, 0);
     star1.rotation.z = 0.2;
     scene.add(star1);
 
-    // Star 2: Emerald Sparkle (Bottom Left of Hero)
+    // Star 2: Emerald Sparkle (Lower Left - balancing typography & metrics)
     const star2 = new THREE.Mesh(starGeomSmall, emeraldMaterial);
-    star2.position.set(-8.0, -3.2, 2);
+    star2.position.set(-7.5, -2.8, 1.2);
     star2.rotation.z = -0.3;
     scene.add(star2);
 
-    // Star 3: Deep Navy Accent Star (Top Left)
+    // Star 3: Deep Navy Architectural Star (Upper Left Open Margin - clear of headline)
     const star3 = new THREE.Mesh(starGeomSmall, navyAccentMaterial);
-    star3.position.set(-6.5, 4.8, -2);
+    star3.position.set(-10.2, 5.2, -2);
+    star3.rotation.z = 0.4;
     scene.add(star3);
 
-    // 6. Floating Spheres / Geometric beads
-    const sphereGeom = new THREE.SphereGeometry(0.35, 32, 32);
-    const goldSphere = new THREE.Mesh(sphereGeom, goldMaterial);
-    goldSphere.position.set(6.2, -4.5, 1);
+    // Star 4: Warm Gold Accent Star (Mid Right)
+    const star4 = new THREE.Mesh(starGeomSmall, goldMaterial);
+    star4.position.set(7.5, -1.8, -1.5);
+    star4.rotation.z = -0.15;
+    scene.add(star4);
+
+    // 6. Floating Spheres & Pearls
+    const sphereGeomBig = new THREE.SphereGeometry(0.3, 28, 28);
+    const sphereGeomSmall = new THREE.SphereGeometry(0.2, 22, 22);
+
+    const goldSphere = new THREE.Mesh(sphereGeomBig, goldMaterial);
+    goldSphere.position.set(5.8, -4.2, 0.8);
     scene.add(goldSphere);
 
-    const emeraldSphere = new THREE.Mesh(new THREE.SphereGeometry(0.25, 24, 24), emeraldMaterial);
-    emeraldSphere.position.set(-4.5, -5.0, 0);
+    const emeraldSphere = new THREE.Mesh(sphereGeomSmall, emeraldMaterial);
+    emeraldSphere.position.set(-5.5, -4.8, 0.5);
     scene.add(emeraldSphere);
+
+    const navySphere = new THREE.Mesh(sphereGeomSmall, navyAccentMaterial);
+    navySphere.position.set(-8.2, 1.2, -2);
+    scene.add(navySphere);
 
     // 7. Interactive Mouse Parallax
     let mouseX = 0;
@@ -149,25 +162,32 @@ export default function HeroThreeCanvas() {
 
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
 
-    // 8. Animation Loop with Visibility / Intersection Check
+    // 8. Animation Loop with Visibility / Intersection Pause Check
     let isVisible = true;
+    let animationFrameId = 0;
+
     const observer = new IntersectionObserver(
       (entries) => {
+        const wasVisible = isVisible;
         isVisible = entries[0].isIntersecting;
+        if (isVisible && !wasVisible && !animationFrameId) {
+          animationFrameId = requestAnimationFrame(animate);
+        }
       },
-      { threshold: 0.1 }
+      { threshold: 0.05 }
     );
     observer.observe(container);
 
-    let animationFrameId: number;
-    let clock = new THREE.Clock();
+    const startTime = performance.now();
 
     const animate = () => {
+      if (!isVisible) {
+        animationFrameId = 0;
+        return;
+      }
       animationFrameId = requestAnimationFrame(animate);
 
-      if (!isVisible) return;
-
-      const elapsed = clock.getElapsedTime();
+      const elapsed = (performance.now() - startTime) * 0.001;
 
       // Smooth camera interpolation toward mouse
       targetX += (mouseX - targetX) * 0.05;
@@ -179,20 +199,25 @@ export default function HeroThreeCanvas() {
       // Star 1 organic motion
       star1.rotation.y = elapsed * 0.4;
       star1.rotation.x = Math.sin(elapsed * 0.5) * 0.2;
-      star1.position.y = 4.5 + Math.sin(elapsed * 1.2) * 0.35;
+      star1.position.y = 3.8 + Math.sin(elapsed * 1.2) * 0.35;
 
       // Star 2 organic motion
       star2.rotation.y = -elapsed * 0.5;
       star2.rotation.z = Math.cos(elapsed * 0.6) * 0.3;
-      star2.position.y = -3.2 + Math.cos(elapsed * 1.5) * 0.25;
+      star2.position.y = -2.8 + Math.cos(elapsed * 1.5) * 0.25;
 
-      // Star 3 organic motion
+      // Star 3 organic motion (deep background)
       star3.rotation.y = elapsed * 0.3;
-      star3.position.y = 4.8 + Math.sin(elapsed * 0.9) * 0.3;
+      star3.position.y = 5.2 + Math.sin(elapsed * 0.9) * 0.25;
+
+      // Star 4 organic motion
+      star4.rotation.y = -elapsed * 0.35;
+      star4.position.y = -1.8 + Math.cos(elapsed * 1.1) * 0.3;
 
       // Spheres bobbing
-      goldSphere.position.y = -4.5 + Math.sin(elapsed * 1.4) * 0.2;
-      emeraldSphere.position.y = -5.0 + Math.cos(elapsed * 1.3) * 0.2;
+      goldSphere.position.y = -4.2 + Math.sin(elapsed * 1.4) * 0.2;
+      emeraldSphere.position.y = -4.8 + Math.cos(elapsed * 1.3) * 0.2;
+      navySphere.position.y = 1.2 + Math.sin(elapsed * 1.1) * 0.15;
 
       renderer.render(scene, camera);
     };
@@ -222,7 +247,8 @@ export default function HeroThreeCanvas() {
       renderer.dispose();
       starGeomBig.dispose();
       starGeomSmall.dispose();
-      sphereGeom.dispose();
+      sphereGeomBig.dispose();
+      sphereGeomSmall.dispose();
       goldMaterial.dispose();
       emeraldMaterial.dispose();
       navyAccentMaterial.dispose();

@@ -136,3 +136,50 @@ html.lenis, html.lenis body {
   background-image: radial-gradient(#0a2540 2px, transparent 2px);
   background-size: 16px 16px;
 }
+
+/* Liquid Blob & Wave Animations */
+@keyframes liquidBlob {
+  0% {
+    border-radius: 44% 56% 62% 38% / 48% 40% 60% 52%;
+  }
+  50% {
+    border-radius: 60% 40% 40% 60% / 55% 55% 45% 45%;
+  }
+  100% {
+    border-radius: 40% 60% 55% 45% / 42% 58% 42% 58%;
+  }
+}
+
+@keyframes waveMove {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-wave {
+  animation: waveMove 3s linear infinite;
+}
+
+.font-inter-tight {
+  font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 500;
+}
+
+/* Scroll-Driven Archive Gallery Cards */
+.bp-card {
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bp-card {
+    will-change: auto;
+  }
+}
+
+/* Hide Next.js default dev overlay badge */
+nextjs-portal {
+  display: none !important;
+}

@@ -3,224 +3,261 @@
 import { useState } from "react";
 import { 
   Code2, 
-  Layers, 
+  Cpu, 
   Database, 
   Video, 
-  Cpu, 
-  Palette, 
-  Sparkles, 
-  Zap, 
-  CheckCircle,
-  ExternalLink 
+  CheckCircle2, 
+  Zap,
+  Sparkles,
+  ArrowUpRight
 } from "lucide-react";
+import { FadeUp, StaggerContainer, StaggerItem } from "@/components/common/ScrollReveal";
 
-interface SkillItem {
-  name: string;
-  category: "frontend" | "backend" | "creator";
-  level: string;
-  description: string;
-  tag: string;
+interface SkillCategory {
+  id: string;
+  number: string;
+  title: string;
+  tagline: string;
+  icon: any;
+  skills: {
+    name: string;
+    tag: string;
+    summary: string;
+  }[];
 }
 
-const skillsData: SkillItem[] = [
-  // Frontend
+const categories: SkillCategory[] = [
   {
-    name: "Next.js 16 & React 19",
-    category: "frontend",
-    level: "Expert",
-    description: "App Router, Server Actions, React Compiler, Streaming SSR, and dynamic route cache.",
-    tag: "Primary Framework",
+    id: "frontend",
+    number: "01",
+    title: "Core Web Architecture",
+    tagline: "High-performance interfaces built with modern reactive runtimes.",
+    icon: Code2,
+    skills: [
+      {
+        name: "Next.js 16 & React 19",
+        tag: "Primary Framework",
+        summary: "App Router, Server Actions, React Compiler, Streaming SSR, and Partial Prerendering.",
+      },
+      {
+        name: "TypeScript (Strict)",
+        tag: "Type Safety",
+        summary: "Strict compile-time guarantees, end-to-end type safety, and clean architecture.",
+      },
+      {
+        name: "Tailwind CSS v4",
+        tag: "Design Systems",
+        summary: "Zero-runtime CSS compilation, modular token systems, and responsive utility styling.",
+      },
+      {
+        name: "Core Web Vitals",
+        tag: "Performance",
+        summary: "Zero cumulative layout shifts, sub-second LCP, and 100/100 Lighthouse scores.",
+      },
+    ],
   },
   {
-    name: "Three.js & WebGL",
-    category: "frontend",
-    level: "Advanced",
-    description: "Custom 3D shaders, procedural meshes, camera parallax, and performance-tuned rendering.",
-    tag: "Creative Tech",
+    id: "motion",
+    number: "02",
+    title: "Spatial & Kinetic Motion",
+    tagline: "Immersive 3D scenes and buttery-smooth 60 FPS interactions.",
+    icon: Cpu,
+    skills: [
+      {
+        name: "Three.js & WebGL",
+        tag: "Creative Computing",
+        summary: "GPU-accelerated meshes, procedural geometries, and dynamic lighting rigs.",
+      },
+      {
+        name: "Custom GLSL Shaders",
+        tag: "Shader Math",
+        summary: "Vertex distortions, fluid fragment colors, and real-time noise algorithms.",
+      },
+      {
+        name: "GSAP 3 ScrollTrigger",
+        tag: "Sequencing",
+        summary: "Pinned timelines, scroll-driven choreography, and smooth SVG morphing.",
+      },
+      {
+        name: "Lenis Smooth Scroll",
+        tag: "Momentum",
+        summary: "Physics-based momentum scroll synchronized with WebGL render loops.",
+      },
+    ],
   },
   {
-    name: "GSAP & Lenis",
-    category: "frontend",
-    level: "Expert",
-    description: "Hardware-accelerated ScrollTrigger sequences, pinned timelines, and kinetic typography.",
-    tag: "Motion System",
+    id: "backend",
+    number: "03",
+    title: "Systems & Distributed Data",
+    tagline: "Resilient APIs and databases architected for scale.",
+    icon: Database,
+    skills: [
+      {
+        name: "Node.js & Edge Functions",
+        tag: "Microservices",
+        summary: "High-throughput REST & WebSocket endpoints running close to global users.",
+      },
+      {
+        name: "PostgreSQL & Prisma",
+        tag: "Data Modeling",
+        summary: "Relational schema indexing, connection pooling, and ACID migration pipelines.",
+      },
+      {
+        name: "Docker & Cloudflare CI/CD",
+        tag: "DevOps",
+        summary: "Containerized reproducible builds, automated GitHub Actions, and DNS caching.",
+      },
+      {
+        name: "Security & Auth",
+        tag: "Hardening",
+        summary: "OAuth 2.0, stateless session verification, CORS policies, and rate limiting.",
+      },
+    ],
   },
   {
-    name: "TypeScript & Tailwind v4",
-    category: "frontend",
-    level: "Mastery",
-    description: "Strict compile-time type safety, zero-runtime CSS tokens, and component architecture.",
-    tag: "Foundation",
-  },
-  // Backend
-  {
-    name: "Node.js & Edge Runtimes",
-    category: "backend",
-    level: "Expert",
-    description: "High-throughput APIs, streaming endpoints, WebSocket server connections, and microservices.",
-    tag: "Backend Core",
-  },
-  {
-    name: "PostgreSQL & Prisma",
-    category: "backend",
-    level: "Advanced",
-    description: "Relational database schema modeling, connection pooling, indexing, and ACID migrations.",
-    tag: "Database",
-  },
-  {
-    name: "Cloud, Docker & CI/CD",
-    category: "backend",
-    level: "Advanced",
-    description: "Containerized deployment workflows, GitHub Actions, Vercel Edge, and Cloudflare DNS.",
-    tag: "Infrastructure",
-  },
-  {
-    name: "Authentication & Security",
-    category: "backend",
-    level: "Advanced",
-    description: "OAuth 2.0, JWT stateless sessions, role-based access control, and CORS hardening.",
-    tag: "Security",
-  },
-  // Creator
-  {
-    name: "DaVinci Resolve & 4K Editing",
-    category: "creator",
-    level: "Mastery",
-    description: "Color grading in DaVinci YRGB Color Managed, timeline pacing, and sound mastering.",
-    tag: "Post-Production",
-  },
-  {
-    name: "Motion Graphics & After Effects",
-    category: "creator",
-    level: "Advanced",
-    description: "Kinetic titles, UI screen walkthrough tracking, sound design, and custom intro stingers.",
-    tag: "VFX & Motion",
-  },
-  {
-    name: "Tech Storytelling & Scripting",
-    category: "creator",
-    level: "Expert",
-    description: "Translating deep system architecture into engaging 60-second shorts and 15-minute tutorials.",
-    tag: "Narrative",
-  },
-  {
-    name: "Brand Collaboration & Sponsorship",
-    category: "creator",
-    level: "Pro",
-    description: "Native SaaS integrations, developer tool reviews, and high-converting audience reach.",
-    tag: "Monetization",
+    id: "creator",
+    number: "04",
+    title: "Cinematic Media Production",
+    tagline: "Storytelling that converts technical complexity into compelling media.",
+    icon: Video,
+    skills: [
+      {
+        name: "DaVinci Resolve Studio 4K",
+        tag: "Post-Production",
+        summary: "YRGB Color Managed science, narrative pacing, and cinematic color grading.",
+      },
+      {
+        name: "Technical Media Scripting",
+        tag: "Narrative",
+        summary: "Translating deep system design into engaging 60-second shorts and code masterclasses.",
+      },
+      {
+        name: "Studio Sound Engineering",
+        tag: "Acoustics",
+        summary: "Dynamic multi-track equalization, compression, and clear vocal clarity.",
+      },
+    ],
   },
 ];
 
 export default function SkillsSection() {
-  const [activeCategory, setActiveCategory] = useState<"all" | "frontend" | "backend" | "creator">("all");
+  const [activeCategory, setActiveCategory] = useState("all");
 
-  const filteredSkills = activeCategory === "all" 
-    ? skillsData 
-    : skillsData.filter((s) => s.category === activeCategory);
+  const visibleCategories = activeCategory === "all"
+    ? categories
+    : categories.filter((c) => c.id === activeCategory);
 
   return (
-    <section id="skills" className="py-24 px-4 sm:px-6 lg:px-8 bg-slate-50 relative">
-      <div className="absolute inset-0 bg-graph-grid opacity-30 pointer-events-none" />
-
+    <section id="skills" className="py-24 px-4 sm:px-6 lg:px-8 bg-slate-50 relative overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
         
-        {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-6 border-b border-slate-200">
-          <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-amber-100 text-amber-900 text-xs font-mono font-bold uppercase tracking-wider mb-3">
-              02 // CAPABILITIES & ARSENAL
-            </div>
-            <h2 className="font-display font-black text-4xl sm:text-5xl text-[#0A2540] tracking-tight">
-              Tech Stack & Media Craft.
-            </h2>
-          </div>
-          
-          {/* Category Filter Pills */}
-          <div className="flex flex-wrap gap-2 mt-6 md:mt-0">
-            {(["all", "frontend", "backend", "creator"] as const).map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`px-4 py-2 rounded-full text-xs font-semibold tracking-wider uppercase transition-all duration-200 cursor-pointer ${
-                  activeCategory === cat
-                    ? "bg-[#0A2540] text-amber-400 shadow-md"
-                    : "bg-white text-slate-600 hover:text-[#0A2540] hover:bg-slate-100 border border-slate-200"
-                }`}
-              >
-                {cat === "all" ? "All Skills" : cat}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Skills Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-          {filteredSkills.map((skill, index) => (
-            <div
-              key={skill.name}
-              className="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-amber-400/80 transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1"
-            >
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-[10px] font-mono uppercase tracking-widest px-2.5 py-1 rounded-full bg-slate-100 text-slate-600 font-semibold group-hover:bg-amber-50 group-hover:text-amber-800 transition-colors">
-                    {skill.tag}
-                  </span>
-                  <span className="text-[11px] font-mono font-bold text-emerald-600 flex items-center gap-1">
-                    <CheckCircle className="w-3.5 h-3.5" />
-                    {skill.level}
-                  </span>
-                </div>
-
-                <h3 className="font-display font-bold text-lg text-[#0A2540] mb-2 group-hover:text-amber-600 transition-colors">
-                  {skill.name}
-                </h3>
-
-                <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
-                  {skill.description}
-                </p>
+        {/* Clean, Spacious Header */}
+        <FadeUp>
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-8 border-b border-slate-200/80 gap-6">
+            <div className="max-w-2xl">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-mono font-bold uppercase tracking-wider mb-4">
+                <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
+                SKILLS & CAPABILITIES
               </div>
-
-              <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-mono text-slate-400">
-                <span>Production Ready</span>
-                <span className="text-amber-500 font-bold">100%</span>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Live Engineering Standards Banner */}
-        <div className="mt-12 bg-[#0A2540] text-white rounded-3xl p-6 sm:p-8 flex flex-col lg:flex-row items-center justify-between gap-6 shadow-xl">
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-2xl bg-amber-400/20 text-amber-400 flex items-center justify-center shrink-0">
-              <Zap className="w-6 h-6" />
-            </div>
-            <div>
-              <h4 className="font-display font-bold text-lg text-white">
-                Zero Compromise Performance Guarantee
-              </h4>
-              <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-xl">
-                Every application built adheres to strict standards: 60 FPS motion, sub-second LCP, 100/100 Lighthouse metrics, and full responsive touch fidelity.
+              <h2 className="font-display font-black text-4xl sm:text-5xl lg:text-6xl text-[#0A2540] tracking-tight leading-[1.08]">
+                Tech Stack & Craft.
+              </h2>
+              <p className="text-slate-600 text-base sm:text-lg mt-3 leading-relaxed">
+                Curated tools and engineering practices honed through real-world commercial deliverables.
               </p>
             </div>
+
+            {/* Category Filter Pills with Ample Touch Targets */}
+            <div className="flex flex-wrap gap-2">
+              <button
+                onClick={() => setActiveCategory("all")}
+                className={`px-4 py-2 rounded-full text-xs font-mono font-bold uppercase tracking-wider transition-all cursor-pointer ${
+                  activeCategory === "all"
+                    ? "bg-[#0A2540] text-amber-400 shadow-sm"
+                    : "bg-white text-slate-600 hover:text-[#0A2540] border border-slate-200 hover:border-slate-300"
+                }`}
+              >
+                All Skills
+              </button>
+              {categories.map((c) => (
+                <button
+                  key={c.id}
+                  onClick={() => setActiveCategory(c.id)}
+                  className={`px-4 py-2 rounded-full text-xs font-mono font-bold uppercase tracking-wider transition-all cursor-pointer ${
+                    activeCategory === c.id
+                      ? "bg-[#0A2540] text-amber-400 shadow-sm"
+                      : "bg-white text-slate-600 hover:text-[#0A2540] border border-slate-200 hover:border-slate-300"
+                  }`}
+                >
+                  {c.title.split(" ")[0]}
+                </button>
+              ))}
+            </div>
           </div>
-          <div className="flex items-center gap-6 text-center">
-            <div>
-              <div className="font-mono font-bold text-xl text-amber-400">60 FPS</div>
-              <div className="text-[10px] font-mono text-slate-400 uppercase">Motion Rate</div>
-            </div>
-            <div className="w-px h-8 bg-slate-700" />
-            <div>
-              <div className="font-mono font-bold text-xl text-emerald-400">&lt; 0.8s</div>
-              <div className="text-[10px] font-mono text-slate-400 uppercase">First Load</div>
-            </div>
-            <div className="w-px h-8 bg-slate-700" />
-            <div>
-              <div className="font-mono font-bold text-xl text-cyan-400">A11y</div>
-              <div className="text-[10px] font-mono text-slate-400 uppercase">WCAG AA</div>
-            </div>
-          </div>
-        </div>
+        </FadeUp>
+
+        {/* Clean & Spacious Grid of Categories */}
+        <StaggerContainer className="grid grid-cols-1 lg:grid-cols-2 gap-10" staggerDelay={0.1}>
+          {visibleCategories.map((cat) => {
+            const Icon = cat.icon;
+            return (
+              <StaggerItem
+                key={cat.id}
+                className="bg-white rounded-3xl p-8 sm:p-10 border border-slate-200/90 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between group/card hover:-translate-y-1"
+              >
+                <div>
+                  {/* Category Card Header */}
+                  <div className="flex items-start justify-between pb-6 mb-8 border-b border-slate-100">
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 rounded-2xl bg-slate-100 text-[#0A2540] flex items-center justify-center shrink-0">
+                        <Icon className="w-6 h-6" />
+                      </div>
+                      <div>
+                        <div className="text-[11px] font-mono text-slate-400 uppercase tracking-widest font-semibold">
+                          PILLAR // {cat.number}
+                        </div>
+                        <h3 className="font-display font-black text-2xl text-[#0A2540]">
+                          {cat.title}
+                        </h3>
+                      </div>
+                    </div>
+                  </div>
+
+                  <p className="text-slate-500 text-xs sm:text-sm mb-8 leading-relaxed">
+                    {cat.tagline}
+                  </p>
+
+                  {/* Spacious Skills List */}
+                  <div className="space-y-6">
+                    {cat.skills.map((skill) => (
+                      <div key={skill.name} className="group/item">
+                        <div className="flex items-baseline justify-between gap-4 mb-1">
+                          <h4 className="font-display font-bold text-base text-[#0A2540] group-hover/item:text-amber-600 transition-colors">
+                            {skill.name}
+                          </h4>
+                          <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 shrink-0">
+                            {skill.tag}
+                          </span>
+                        </div>
+                        <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
+                          {skill.summary}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="mt-8 pt-6 border-t border-slate-100 flex items-center justify-between text-xs font-mono text-slate-400">
+                  <span className="flex items-center gap-1.5 text-emerald-600 font-bold">
+                    <CheckCircle2 className="w-4 h-4" />
+                    Production Ready
+                  </span>
+                  <span>100% Verified</span>
+                </div>
+              </StaggerItem>
+            );
+          })}
+        </StaggerContainer>
 
       </div>
     </section>

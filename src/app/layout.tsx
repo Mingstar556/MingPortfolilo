@@ -39,7 +39,14 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Ming Star | Full-Stack Web Developer & Content Creator",
     description: "Crafting high-performance web applications & tech content.",
-    images: ["/assets/ming-cutout.png"],
+    images: ["/assets/ming-cutout.webp"],
+  },
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+    apple: "/icon.svg",
   },
 };
 
@@ -53,6 +60,16 @@ export default function RootLayout({
       lang="en"
       className={`${spaceGrotesk.variable} ${plusJakarta.variable} ${jetbrainsMono.variable} scroll-smooth antialiased`}
     >
+      <head>
+        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+        <link rel="alternate icon" href="/favicon.ico" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300..900;1,300..900&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body className="min-h-screen bg-[#FBFCFD] text-[#0A2540] font-sans selection:bg-[#F59E0B] selection:text-[#0A2540]">
         {children}
       </body>
