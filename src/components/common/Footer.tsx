@@ -30,12 +30,12 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-[#07192C] text-white py-14 px-4 sm:px-6 lg:px-8 border-t border-slate-800 relative z-20">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+    <footer className="bg-[#07192C] text-white pt-12 pb-24 sm:py-14 px-4 sm:px-6 lg:px-8 border-t border-slate-800 relative z-20">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 sm:gap-8">
         
         {/* Brand */}
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-full bg-[#0A2540] border border-amber-400/40 flex items-center justify-center text-amber-400 font-mono font-bold text-xs tracking-wider">
+          <div className="w-9 h-9 rounded-full bg-[#0A2540] border border-amber-400/40 flex items-center justify-center text-amber-400 font-mono font-bold text-xs tracking-wider shrink-0">
             MS
           </div>
           <div>
@@ -49,18 +49,18 @@ export default function Footer() {
         </div>
 
         {/* Local Time Ticker & Direct Contacts */}
-        <div className="flex flex-wrap items-center justify-center gap-4 text-xs font-mono">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 text-xs font-mono">
           <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800/60 border border-slate-700/60 text-slate-300">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
             <span>BKK / UTC+7: {time || "12:00:00 PM"}</span>
           </div>
 
-          <div className="flex items-center gap-3 text-slate-400 text-[11px]">
+          <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 text-slate-400 text-[11px]">
             <a
               href="https://t.me/mingstar01"
               target="_blank"
               rel="noreferrer"
-              className="hover:text-sky-400 transition-colors"
+              className="hover:text-sky-400 transition-colors p-1"
             >
               TG: @mingstar01
             </a>
@@ -69,14 +69,14 @@ export default function Footer() {
               href="https://www.tiktok.com/@ming.star"
               target="_blank"
               rel="noreferrer"
-              className="hover:text-rose-400 transition-colors"
+              className="hover:text-rose-400 transition-colors p-1"
             >
               TikTok: @ming.star
             </a>
             <span className="text-slate-700">&bull;</span>
             <a
               href="tel:060206666"
-              className="hover:text-emerald-400 transition-colors"
+              className="hover:text-emerald-400 transition-colors p-1"
             >
               TEL: 060206666
             </a>
@@ -85,7 +85,7 @@ export default function Footer() {
               href="https://github.com/mingstar556"
               target="_blank"
               rel="noreferrer"
-              className="hover:text-white transition-colors"
+              className="hover:text-white transition-colors p-1"
             >
               GitHub
             </a>
@@ -93,13 +93,13 @@ export default function Footer() {
         </div>
 
         {/* Back to top & copyright */}
-        <div className="flex items-center gap-6">
-          <span className="text-xs font-mono text-slate-500">
-            &copy; 2026 Ming Star. All rights reserved.
+        <div className="flex items-center justify-between w-full md:w-auto gap-6 pt-4 md:pt-0 border-t border-slate-800/60 md:border-t-0">
+          <span className="text-[11px] sm:text-xs font-mono text-slate-500">
+            &copy; 2026 Ming Star.
           </span>
           <button
             onClick={scrollToTop}
-            className="w-10 h-10 rounded-full bg-slate-800 hover:bg-amber-400 hover:text-[#0A2540] text-slate-300 flex items-center justify-center transition-all cursor-pointer shadow-md active:scale-95"
+            className="w-10 h-10 rounded-full bg-slate-800 hover:bg-amber-400 hover:text-[#0A2540] text-slate-300 flex items-center justify-center transition-all cursor-pointer shadow-md active:scale-95 shrink-0"
             aria-label="Back to top"
           >
             <ArrowUp className="w-4 h-4" />

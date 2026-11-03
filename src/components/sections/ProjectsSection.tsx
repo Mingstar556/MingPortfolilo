@@ -83,21 +83,21 @@ const realProjects: RealProject[] = [
 
 export default function ProjectsSection() {
   return (
-    <section id="projects" className="py-24 px-4 sm:px-6 lg:px-8 bg-white relative overflow-hidden">
+    <section id="projects" className="py-20 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
         
         {/* Clean, Spacious Section Header */}
         <FadeUp>
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-8 border-b border-slate-200/80 gap-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 pb-6 sm:pb-8 border-b border-slate-200/80 gap-6">
             <div className="max-w-2xl">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 text-amber-900 border border-amber-200/70 text-xs font-mono font-bold uppercase tracking-wider mb-4">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 text-amber-900 border border-amber-200/70 text-xs font-mono font-bold uppercase tracking-wider mb-3 sm:mb-4">
                 <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
                 LIVE WEB PROJECTS & REPOSITORIES
               </div>
-              <h2 className="font-display font-black text-4xl sm:text-5xl lg:text-6xl text-[#0A2540] tracking-tight leading-[1.08]">
+              <h2 className="font-display font-black text-3xl xs:text-4xl sm:text-5xl lg:text-6xl text-[#0A2540] tracking-tight leading-[1.08]">
                 Selected Live Works.
               </h2>
-              <p className="text-slate-600 text-base sm:text-lg mt-3 leading-relaxed">
+              <p className="text-slate-600 text-sm sm:text-base lg:text-lg mt-2 sm:mt-3 leading-relaxed">
                 Real web applications and live open-source repositories deployed to production.
               </p>
             </div>
@@ -109,16 +109,16 @@ export default function ProjectsSection() {
         </FadeUp>
 
         {/* Clean, Spacious Project Cards with Browser Preview Mockup Boxes */}
-        <div className="space-y-12">
+        <div className="space-y-8 sm:space-y-12">
           {realProjects.map((proj, idx) => {
             const isEven = idx % 2 === 0;
             return (
               <FadeUp
                 key={proj.id}
                 delay={idx * 0.12}
-                className="bg-slate-50/90 rounded-3xl p-6 sm:p-10 lg:p-12 border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-amber-400/50 transition-all duration-300 relative group overflow-hidden"
+                className="bg-slate-50/90 rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-12 border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-amber-400/50 transition-all duration-300 relative group overflow-hidden"
               >
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-center">
                   
                   {/* Left or Right: Browser Mockup Window Showing the Homepage */}
                   <div
@@ -130,27 +130,27 @@ export default function ProjectsSection() {
                       href={proj.liveUrl}
                       target="_blank"
                       rel="noreferrer"
-                      className="group/browser block relative rounded-2xl overflow-hidden bg-slate-900 border border-slate-700/80 shadow-2xl hover:shadow-[0_20px_50px_rgba(10,37,64,0.22)] transition-all duration-300 transform group-hover/browser:scale-[1.015]"
+                      className="group/browser block relative rounded-xl sm:rounded-2xl overflow-hidden bg-slate-900 border border-slate-700/80 shadow-2xl hover:shadow-[0_20px_50px_rgba(10,37,64,0.22)] transition-all duration-300 transform group-hover/browser:scale-[1.015]"
                       aria-label={`Open live website: ${proj.title}`}
                     >
                       {/* macOS Browser Window Top Bar */}
-                      <div className="bg-[#0B1E32] border-b border-white/10 px-4 py-2.5 flex items-center justify-between gap-3 select-none">
+                      <div className="bg-[#0B1E32] border-b border-white/10 px-3 sm:px-4 py-2 sm:py-2.5 flex items-center justify-between gap-2 sm:gap-3 select-none">
                         {/* Traffic light window controls */}
                         <div className="flex items-center gap-1.5 shrink-0">
-                          <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56] inline-block shadow-xs" />
-                          <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E] inline-block shadow-xs" />
-                          <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F] inline-block shadow-xs" />
+                          <span className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#FF5F56] inline-block shadow-xs" />
+                          <span className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#FFBD2E] inline-block shadow-xs" />
+                          <span className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#27C93F] inline-block shadow-xs" />
                         </div>
 
                         {/* SSL URL Address Bar */}
-                        <div className="flex-1 max-w-[260px] sm:max-w-sm mx-auto bg-slate-950/80 rounded-full px-3 py-1 flex items-center justify-center gap-1.5 text-[11px] font-mono text-slate-300 border border-white/5">
+                        <div className="flex-1 max-w-[170px] xs:max-w-[210px] sm:max-w-sm mx-auto bg-slate-950/80 rounded-full px-2.5 sm:px-3 py-0.5 sm:py-1 flex items-center justify-center gap-1.5 text-[10px] sm:text-[11px] font-mono text-slate-300 border border-white/5">
                           <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0" />
-                          <span className="text-slate-500">https://</span>
+                          <span className="text-slate-500 hidden xs:inline">https://</span>
                           <span className="truncate text-slate-200 font-medium">{proj.displayUrl}</span>
                         </div>
 
                         {/* Live indicator & external link */}
-                        <div className="flex items-center gap-1 text-[10px] font-mono font-bold text-amber-400 uppercase tracking-widest shrink-0">
+                        <div className="flex items-center gap-1 text-[9px] sm:text-[10px] font-mono font-bold text-amber-400 uppercase tracking-widest shrink-0">
                           <span className="hidden sm:inline">LIVE</span>
                           <ArrowUpRight className="w-3.5 h-3.5 group-hover/browser:translate-x-0.5 group-hover/browser:-translate-y-0.5 transition-transform" />
                         </div>
@@ -184,33 +184,33 @@ export default function ProjectsSection() {
                   >
                     <div>
                       {/* Index & Badges */}
-                      <div className="flex flex-wrap items-center gap-3 mb-4">
-                        <span className="font-mono text-2xl sm:text-3xl font-black text-[#0A2540] group-hover:text-amber-600 transition-colors">
+                      <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                        <span className="font-mono text-xl sm:text-3xl font-black text-[#0A2540] group-hover:text-amber-600 transition-colors">
                           {proj.number}
                         </span>
-                        <span className="text-xs font-mono uppercase tracking-widest px-3 py-1 rounded-full bg-white border border-slate-200 text-[#0A2540] font-bold shadow-xs">
+                        <span className="text-[11px] sm:text-xs font-mono uppercase tracking-widest px-2.5 sm:px-3 py-1 rounded-full bg-white border border-slate-200 text-[#0A2540] font-bold shadow-xs">
                           {proj.category}
                         </span>
-                        <span className="text-[11px] font-mono font-semibold text-emerald-700 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200">
+                        <span className="text-[10px] sm:text-[11px] font-mono font-semibold text-emerald-700 px-2.5 sm:px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200">
                           {proj.badge}
                         </span>
                       </div>
 
-                      <h3 className="font-display font-black text-2xl sm:text-3xl text-[#0A2540] mb-2 group-hover:text-amber-600 transition-colors leading-snug">
+                      <h3 className="font-display font-black text-xl sm:text-2xl lg:text-3xl text-[#0A2540] mb-2 group-hover:text-amber-600 transition-colors leading-snug">
                         {proj.title}
                       </h3>
 
-                      <p className="text-slate-500 text-xs sm:text-sm font-mono mb-4">
+                      <p className="text-slate-500 text-xs sm:text-sm font-mono mb-3 sm:mb-4">
                         {proj.tagline}
                       </p>
 
-                      <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-5 font-sans">
+                      <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-4 sm:mb-5 font-sans">
                         {proj.description}
                       </p>
 
                       {/* Engineering Highlights */}
-                      <div className="space-y-2 mb-6 bg-white p-4 sm:p-5 rounded-2xl border border-slate-200/80">
-                        <div className="text-[11px] font-mono uppercase font-bold text-slate-700 tracking-wider">
+                      <div className="space-y-2 mb-5 sm:mb-6 bg-white p-3.5 sm:p-5 rounded-2xl border border-slate-200/80">
+                        <div className="text-[10px] sm:text-[11px] font-mono uppercase font-bold text-slate-700 tracking-wider">
                           Key Engineering Highlights
                         </div>
                         {proj.highlights.map((h, i) => (
@@ -222,11 +222,11 @@ export default function ProjectsSection() {
                       </div>
 
                       {/* Tech Chips */}
-                      <div className="flex flex-wrap gap-2 mb-6">
+                      <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-5 sm:mb-6">
                         {proj.tech.map((t) => (
                           <span
                             key={t}
-                            className="px-3 py-1 rounded-full bg-white border border-slate-200 text-xs font-mono font-semibold text-slate-700 shadow-xs"
+                            className="px-2.5 sm:px-3 py-1 rounded-full bg-white border border-slate-200 text-[11px] sm:text-xs font-mono font-semibold text-slate-700 shadow-xs"
                           >
                             {t}
                           </span>
@@ -234,13 +234,13 @@ export default function ProjectsSection() {
                       </div>
                     </div>
 
-                    {/* Action Buttons Row */}
-                    <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-slate-200/70">
+                    {/* Action Buttons Row - Stacked full-width on mobile */}
+                    <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 pt-4 border-t border-slate-200/70">
                       <a
                         href={proj.liveUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#0A2540] hover:bg-[#07192C] text-white text-xs font-bold font-mono tracking-wider shadow-md hover:shadow-lg active:scale-95 transition-all"
+                        className="inline-flex items-center justify-center gap-2 px-6 py-3.5 min-h-[48px] rounded-full bg-[#0A2540] hover:bg-[#07192C] text-white text-xs font-bold font-mono tracking-wider shadow-md active:scale-95 transition-all cursor-pointer"
                       >
                         <span>VISIT LIVE SITE</span>
                         <ArrowUpRight className="w-4 h-4 text-amber-400" />
@@ -250,7 +250,7 @@ export default function ProjectsSection() {
                         href={proj.githubUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white hover:bg-slate-100 text-[#0A2540] text-xs font-bold font-mono tracking-wider border border-slate-300 shadow-xs active:scale-95 transition-all"
+                        className="inline-flex items-center justify-center gap-2 px-5 py-3.5 min-h-[48px] rounded-full bg-white hover:bg-slate-100 text-[#0A2540] text-xs font-bold font-mono tracking-wider border border-slate-300 shadow-xs active:scale-95 transition-all cursor-pointer"
                       >
                         <GithubIcon className="w-4 h-4" />
                         <span>VIEW GITHUB REPO</span>

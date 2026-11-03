@@ -148,30 +148,30 @@ export default function SkillsSection() {
     : categories.filter((c) => c.id === activeCategory);
 
   return (
-    <section id="skills" className="py-24 px-4 sm:px-6 lg:px-8 bg-slate-50 relative overflow-hidden">
+    <section id="skills" className="py-20 sm:py-24 px-4 sm:px-6 lg:px-8 bg-slate-50 relative overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
         
         {/* Clean, Spacious Header */}
         <FadeUp>
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-8 border-b border-slate-200/80 gap-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 pb-6 sm:pb-8 border-b border-slate-200/80 gap-6">
             <div className="max-w-2xl">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-mono font-bold uppercase tracking-wider mb-4">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-mono font-bold uppercase tracking-wider mb-3 sm:mb-4">
                 <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
                 SKILLS & CAPABILITIES
               </div>
-              <h2 className="font-display font-black text-4xl sm:text-5xl lg:text-6xl text-[#0A2540] tracking-tight leading-[1.08]">
+              <h2 className="font-display font-black text-3xl xs:text-4xl sm:text-5xl lg:text-6xl text-[#0A2540] tracking-tight leading-[1.08]">
                 Tech Stack & Craft.
               </h2>
-              <p className="text-slate-600 text-base sm:text-lg mt-3 leading-relaxed">
+              <p className="text-slate-600 text-sm sm:text-base lg:text-lg mt-2 sm:mt-3 leading-relaxed">
                 Curated tools and engineering practices honed through real-world commercial deliverables.
               </p>
             </div>
 
-            {/* Category Filter Pills with Ample Touch Targets */}
-            <div className="flex flex-wrap gap-2">
+            {/* Category Filter Pills - Mobile Horizontal Swipe Strip */}
+            <div className="flex items-center gap-2 overflow-x-auto pb-2 sm:pb-0 w-full sm:w-auto -mx-4 px-4 sm:mx-0 sm:px-0 no-scrollbar">
               <button
                 onClick={() => setActiveCategory("all")}
-                className={`px-4 py-2 rounded-full text-xs font-mono font-bold uppercase tracking-wider transition-all cursor-pointer ${
+                className={`px-4 py-2 min-h-[38px] rounded-full text-xs font-mono font-bold uppercase tracking-wider transition-all cursor-pointer whitespace-nowrap active:scale-95 shrink-0 ${
                   activeCategory === "all"
                     ? "bg-[#0A2540] text-amber-400 shadow-sm"
                     : "bg-white text-slate-600 hover:text-[#0A2540] border border-slate-200 hover:border-slate-300"
@@ -183,7 +183,7 @@ export default function SkillsSection() {
                 <button
                   key={c.id}
                   onClick={() => setActiveCategory(c.id)}
-                  className={`px-4 py-2 rounded-full text-xs font-mono font-bold uppercase tracking-wider transition-all cursor-pointer ${
+                  className={`px-4 py-2 min-h-[38px] rounded-full text-xs font-mono font-bold uppercase tracking-wider transition-all cursor-pointer whitespace-nowrap active:scale-95 shrink-0 ${
                     activeCategory === c.id
                       ? "bg-[#0A2540] text-amber-400 shadow-sm"
                       : "bg-white text-slate-600 hover:text-[#0A2540] border border-slate-200 hover:border-slate-300"
@@ -197,45 +197,45 @@ export default function SkillsSection() {
         </FadeUp>
 
         {/* Clean & Spacious Grid of Categories */}
-        <StaggerContainer className="grid grid-cols-1 lg:grid-cols-2 gap-10" staggerDelay={0.1}>
+        <StaggerContainer className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-10" staggerDelay={0.1}>
           {visibleCategories.map((cat) => {
             const Icon = cat.icon;
             return (
               <StaggerItem
                 key={cat.id}
-                className="bg-white rounded-3xl p-8 sm:p-10 border border-slate-200/90 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between group/card hover:-translate-y-1"
+                className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10 border border-slate-200/90 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between group/card hover:-translate-y-1"
               >
                 <div>
                   {/* Category Card Header */}
-                  <div className="flex items-start justify-between pb-6 mb-8 border-b border-slate-100">
-                    <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 rounded-2xl bg-slate-100 text-[#0A2540] flex items-center justify-center shrink-0">
-                        <Icon className="w-6 h-6" />
+                  <div className="flex items-start justify-between pb-5 sm:pb-6 mb-6 sm:mb-8 border-b border-slate-100">
+                    <div className="flex items-center gap-3 sm:gap-4">
+                      <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-slate-100 text-[#0A2540] flex items-center justify-center shrink-0">
+                        <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
                       </div>
                       <div>
-                        <div className="text-[11px] font-mono text-slate-400 uppercase tracking-widest font-semibold">
+                        <div className="text-[10px] sm:text-[11px] font-mono text-slate-400 uppercase tracking-widest font-semibold">
                           PILLAR // {cat.number}
                         </div>
-                        <h3 className="font-display font-black text-2xl text-[#0A2540]">
+                        <h3 className="font-display font-black text-xl sm:text-2xl text-[#0A2540]">
                           {cat.title}
                         </h3>
                       </div>
                     </div>
                   </div>
 
-                  <p className="text-slate-500 text-xs sm:text-sm mb-8 leading-relaxed">
+                  <p className="text-slate-500 text-xs sm:text-sm mb-6 sm:mb-8 leading-relaxed">
                     {cat.tagline}
                   </p>
 
                   {/* Spacious Skills List */}
-                  <div className="space-y-6">
+                  <div className="space-y-5 sm:space-y-6">
                     {cat.skills.map((skill) => (
                       <div key={skill.name} className="group/item">
-                        <div className="flex items-baseline justify-between gap-4 mb-1">
-                          <h4 className="font-display font-bold text-base text-[#0A2540] group-hover/item:text-amber-600 transition-colors">
+                        <div className="flex flex-col xs:flex-row xs:items-baseline justify-between gap-1 xs:gap-4 mb-1">
+                          <h4 className="font-display font-bold text-sm sm:text-base text-[#0A2540] group-hover/item:text-amber-600 transition-colors">
                             {skill.name}
                           </h4>
-                          <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 shrink-0">
+                          <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 shrink-0 self-start xs:self-auto">
                             {skill.tag}
                           </span>
                         </div>
@@ -247,7 +247,7 @@ export default function SkillsSection() {
                   </div>
                 </div>
 
-                <div className="mt-8 pt-6 border-t border-slate-100 flex items-center justify-between text-xs font-mono text-slate-400">
+                <div className="mt-6 sm:mt-8 pt-5 sm:pt-6 border-t border-slate-100 flex items-center justify-between text-xs font-mono text-slate-400">
                   <span className="flex items-center gap-1.5 text-emerald-600 font-bold">
                     <CheckCircle2 className="w-4 h-4" />
                     Production Ready

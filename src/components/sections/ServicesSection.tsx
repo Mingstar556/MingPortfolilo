@@ -87,20 +87,20 @@ export default function ServicesSection() {
   };
 
   return (
-    <section id="services" className="py-28 px-4 sm:px-6 lg:px-8 bg-slate-50 relative overflow-hidden">
+    <section id="services" className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-slate-50 relative overflow-hidden">
       <div className="absolute inset-0 bg-graph-grid opacity-35 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         
         {/* Header */}
         <FadeUp>
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-16 pb-6 border-b border-slate-200/90 gap-6">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-12 sm:mb-16 pb-6 border-b border-slate-200/90 gap-6">
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-mono font-bold uppercase tracking-wider mb-4">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-mono font-bold uppercase tracking-wider mb-3 sm:mb-4">
                 <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
                 05 // COLLABORATION & ENGAGEMENT
               </div>
-              <h2 className="font-display font-black text-4xl sm:text-5xl lg:text-6xl text-[#0A2540] tracking-tight leading-[1.05]">
+              <h2 className="font-display font-black text-3xl xs:text-4xl sm:text-5xl lg:text-6xl text-[#0A2540] tracking-tight leading-[1.08]">
                 Work With Ming Star.<br />
                 <span className="text-amber-500">Transparent Deliverables.</span>
               </h2>
@@ -112,18 +112,18 @@ export default function ServicesSection() {
         </FadeUp>
 
         {/* Pricing & Services Cards */}
-        <StaggerContainer className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16" staggerDelay={0.12}>
+        <StaggerContainer className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 mb-12 sm:mb-16" staggerDelay={0.12}>
           {packages.map((pkg) => (
             <StaggerItem
               key={pkg.id}
-              className={`rounded-3xl p-8 sm:p-10 flex flex-col justify-between transition-all duration-300 relative ${
+              className={`rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10 flex flex-col justify-between transition-all duration-300 relative ${
                 pkg.popular
-                  ? "bg-[#0A2540] text-white shadow-2xl border-2 border-amber-400 scale-[1.02] hover:-translate-y-1.5"
+                  ? "bg-[#0A2540] text-white shadow-2xl border-2 border-amber-400 sm:scale-[1.02] hover:-translate-y-1.5"
                   : "bg-white text-[#0A2540] border border-slate-200/90 shadow-lg shadow-slate-900/5 hover:shadow-xl hover:border-slate-300 hover:-translate-y-1"
               }`}
             >
               {pkg.popular && (
-                <div className="absolute -top-3.5 left-8 px-4 py-1 rounded-full bg-amber-400 text-[#0A2540] text-xs font-mono font-bold tracking-wider shadow-md uppercase">
+                <div className="absolute -top-3.5 left-6 sm:left-8 px-3.5 sm:px-4 py-1 rounded-full bg-amber-400 text-[#0A2540] text-[11px] sm:text-xs font-mono font-bold tracking-wider shadow-md uppercase">
                   Most Requested
                 </div>
               )}
@@ -148,7 +148,7 @@ export default function ServicesSection() {
                 </div>
 
                 <h3
-                  className={`font-display font-black text-2xl sm:text-3xl mt-1 mb-2 ${
+                  className={`font-display font-black text-xl sm:text-2xl lg:text-3xl mt-1 mb-2 ${
                     pkg.popular ? "text-white" : "text-[#0A2540]"
                   }`}
                 >
@@ -173,7 +173,7 @@ export default function ServicesSection() {
                 </div>
 
                 <p
-                  className={`text-sm leading-relaxed mb-8 ${
+                  className={`text-xs sm:text-sm leading-relaxed mb-6 sm:mb-8 ${
                     pkg.popular ? "text-slate-300" : "text-slate-600"
                   }`}
                 >
@@ -181,9 +181,9 @@ export default function ServicesSection() {
                 </p>
 
                 {/* Features List */}
-                <div className="space-y-3.5 mb-8">
+                <div className="space-y-3 sm:space-y-3.5 mb-6 sm:mb-8">
                   {pkg.features.map((feat, i) => (
-                    <div key={i} className="flex items-start gap-3">
+                    <div key={i} className="flex items-start gap-2.5 sm:gap-3">
                       <div
                         className={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-0.5 ${
                           pkg.popular
@@ -208,7 +208,7 @@ export default function ServicesSection() {
               {/* Action Button */}
               <a
                 href="#contact"
-                className={`w-full py-4 rounded-full font-bold text-xs font-mono tracking-wider uppercase flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer shadow-md active:scale-95 ${
+                className={`w-full py-3.5 sm:py-4 min-h-[48px] rounded-full font-bold text-xs font-mono tracking-wider uppercase flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer shadow-md active:scale-95 ${
                   pkg.popular
                     ? "bg-amber-400 hover:bg-amber-300 text-[#0A2540] shadow-amber-400/20"
                     : "bg-[#0A2540] hover:bg-[#07192C] text-white shadow-slate-900/10"
@@ -223,13 +223,13 @@ export default function ServicesSection() {
 
         {/* Interactive Scope Add-on Selector */}
         <FadeUp delay={0.2}>
-          <div className="bg-white border border-slate-200/90 rounded-3xl p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
-            <div className="flex items-center gap-4">
+          <div className="bg-white border border-slate-200/90 rounded-2xl sm:rounded-3xl p-5 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-5 sm:gap-6 shadow-sm">
+            <div className="flex items-center gap-3 sm:gap-4">
               <div className="w-10 h-10 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center shrink-0">
                 <Sparkles className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="font-display font-bold text-base text-[#0A2540]">
+                <h4 className="font-display font-bold text-sm sm:text-base text-[#0A2540]">
                   Custom Architecture Add-ons
                 </h4>
                 <p className="text-xs text-slate-500 mt-0.5">
@@ -238,7 +238,7 @@ export default function ServicesSection() {
               </div>
             </div>
 
-            <div className="flex flex-wrap gap-2.5">
+            <div className="flex flex-wrap gap-2 sm:gap-2.5 w-full md:w-auto">
               {addons.map((a) => {
                 const active = selectedAddons.includes(a.id);
                 return (
@@ -246,7 +246,7 @@ export default function ServicesSection() {
                     key={a.id}
                     type="button"
                     onClick={() => toggleAddon(a.id)}
-                    className={`px-4 py-2 rounded-full text-xs font-mono font-semibold transition-all cursor-pointer ${
+                    className={`px-3.5 sm:px-4 py-2 min-h-[42px] rounded-full text-xs font-mono font-semibold transition-all cursor-pointer active:scale-95 ${
                       active
                         ? "bg-[#0A2540] text-amber-400 shadow-sm"
                         : "bg-slate-100 text-slate-600 hover:bg-slate-200 border border-slate-200"

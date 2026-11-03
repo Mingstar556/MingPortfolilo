@@ -177,9 +177,22 @@ export default function InkRevealCharacter() {
       lastY = -1000;
     };
 
+    const handleTouchStart = (e: TouchEvent) => {
+      if (e.touches.length === 0) return;
+      const rect = container.getBoundingClientRect();
+      const x = e.touches[0].clientX - rect.left;
+      const y = e.touches[0].clientY - rect.top;
+      lastX = x;
+      lastY = y;
+      lastTime = performance.now();
+      spawnInkDrop(x, y, 6, 0, 0, false);
+    };
+
     container.addEventListener("mousemove", handlePointerMove);
+    container.addEventListener("touchstart", handleTouchStart, { passive: true });
     container.addEventListener("touchmove", handlePointerMove, { passive: true });
     container.addEventListener("mouseleave", handlePointerLeave);
+    container.addEventListener("touchend", handlePointerLeave, { passive: true });
 
     // Subtle ambient ink bloom if idle
     let idleCounter = 0;
@@ -289,36 +302,38 @@ export default function InkRevealCharacter() {
       cancelAnimationFrame(animationFrameId);
       window.removeEventListener("resize", resizeCanvas);
       container.removeEventListener("mousemove", handlePointerMove);
+      container.removeEventListener("touchstart", handleTouchStart);
       container.removeEventListener("touchmove", handlePointerMove);
       container.removeEventListener("mouseleave", handlePointerLeave);
+      container.removeEventListener("touchend", handlePointerLeave);
     };
   }, []);
 
   return (
     <div
       ref={containerRef}
-      className="relative w-full flex items-center justify-center min-h-[500px] sm:min-h-[620px] lg:min-h-[700px] xl:min-h-[760px] select-none cursor-crosshair group"
+      className="relative w-full flex items-center justify-center min-h-[380px] xs:min-h-[440px] sm:min-h-[580px] lg:min-h-[660px] select-none cursor-crosshair group touch-manipulation"
     >
-      {/* Ming Star Character Portrait - Clean Cutout, Enlarge Size, NO Yellow Arch Behind */}
+      {/* Ming Star Character Portrait - Clean Cutout, Responsive Size */}
       <div
-        className="relative z-10 w-[360px] sm:w-[480px] lg:w-[580px] xl:w-[650px] aspect-square flex items-end justify-center pointer-events-none"
+        className="relative z-10 w-[280px] xs:w-[320px] sm:w-[420px] md:w-[480px] lg:w-[560px] xl:w-[620px] max-w-[92vw] aspect-square flex items-end justify-center pointer-events-none"
         style={{
           transform: "translate(calc(var(--mx, 0px) * -0.28), calc(var(--my, 0px) * -0.28))",
         }}
       >
         {/* Soft, delicate luminous ambient halo around the character silhouette */}
         <div
-          className="absolute inset-8 rounded-full bg-gradient-to-tr from-amber-400/15 via-pink-400/10 to-cyan-400/15 blur-3xl -z-10 pointer-events-none opacity-60 group-hover:opacity-90 transition-opacity duration-500 scale-102"
+          className="absolute inset-4 sm:inset-8 rounded-full bg-gradient-to-tr from-amber-400/15 via-pink-400/10 to-cyan-400/15 blur-2xl sm:blur-3xl -z-10 pointer-events-none opacity-60 group-hover:opacity-90 transition-opacity duration-500 scale-102"
         />
 
-        {/* The Clean Cutout of Ming Star (Optimized WebP, 93KB vs 832KB) */}
+        {/* The Clean Cutout of Ming Star */}
         <Image
           src="/assets/ming-cutout.webp"
           alt="Ming Star - Full-Stack Developer & Content Creator"
           width={1229}
           height={1229}
           priority
-          className="object-contain w-full h-auto drop-shadow-[0_20px_45px_rgba(10,37,64,0.14)] filter contrast-[1.02]"
+          className="object-contain w-full h-auto drop-shadow-[0_16px_36px_rgba(10,37,64,0.12)] filter contrast-[1.02]"
         />
 
         {/* Realistic Watercolor Ink Reveal Interactive Canvas */}
@@ -342,9 +357,9 @@ export default function InkRevealCharacter() {
         }}
       />
 
-      {/* "Roam to unveil" Interactive Hint Badge */}
+      {/* Interactive Hint Badge - Top right on mobile, bottom right on desktop to prevent collision */}
       <div
-        className="absolute bottom-4 right-4 sm:right-10 z-30 pointer-events-none flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/85 backdrop-blur-md border border-slate-200/80 shadow-md text-[10px] sm:text-[11px] font-mono font-medium text-[#0A2540] transition-all duration-300 group-hover:border-amber-400/80"
+        className="absolute top-2 right-2 sm:top-auto sm:bottom-4 sm:right-10 z-30 pointer-events-none flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-slate-200/90 shadow-md text-[10px] sm:text-[11px] font-mono font-medium text-[#0A2540] transition-all duration-300 group-hover:border-amber-400/80"
         style={{
           transform: "translate(calc(var(--mx, 0px) * 0.3), calc(var(--my, 0px) * 0.3))",
         }}
@@ -354,25 +369,25 @@ export default function InkRevealCharacter() {
           <span className="relative inline-flex rounded-full h-2 w-2 bg-pink-500" />
         </span>
         <span className="tracking-wide uppercase">
-          {hasInteracted ? "Realistic Ink Active" : "Roam to unveil"}
+          {hasInteracted ? "Ink Active" : "Touch / Roam to unveil"}
         </span>
       </div>
 
-      {/* Refined Status Pill: Floating Beside Character */}
+      {/* Refined Status Pill: Floating Beside Character - Compact on mobile */}
       <div
-        className="absolute bottom-6 left-2 sm:left-6 z-20 bg-white/90 backdrop-blur-md px-3.5 py-2.5 rounded-2xl shadow-lg shadow-slate-900/8 border border-slate-200/80 flex items-center gap-3 transition-transform duration-300"
+        className="absolute bottom-2 left-2 sm:bottom-6 sm:left-6 z-20 bg-white/95 backdrop-blur-md px-3 py-2 sm:px-3.5 sm:py-2.5 rounded-2xl shadow-lg shadow-slate-900/8 border border-slate-200/80 flex items-center gap-2.5 sm:gap-3 transition-transform duration-300 max-w-[calc(100%-16px)] sm:max-w-none"
         style={{
           transform: "translate(calc(var(--mx, 0px) * 0.4), calc(var(--my, 0px) * 0.4))",
         }}
       >
-        <div className="w-8 h-8 rounded-xl bg-amber-50 flex items-center justify-center text-amber-500 font-bold">
-          <Sparkles className="w-4 h-4 animate-pulse" />
+        <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-amber-50 flex items-center justify-center text-amber-500 font-bold shrink-0">
+          <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 animate-pulse" />
         </div>
-        <div>
-          <div className="text-[10px] font-mono text-slate-500 uppercase tracking-wider">
+        <div className="min-w-0">
+          <div className="text-[9px] sm:text-[10px] font-mono text-slate-500 uppercase tracking-wider truncate">
             Current Focus
           </div>
-          <div className="text-xs font-bold text-[#0A2540]">
+          <div className="text-[11px] sm:text-xs font-bold text-[#0A2540] truncate">
             Next.js 16 &bull; Three.js &bull; Creative Code
           </div>
         </div>

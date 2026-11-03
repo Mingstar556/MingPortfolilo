@@ -107,27 +107,25 @@ export default function HeroThreeCanvas() {
     const starShapeSmall = createStarShape(0.85, 0.22);
     const starGeomSmall = new THREE.ExtrudeGeometry(starShapeSmall, extrudeSettings);
 
-    // Star 1: Majestic Gold Star (Upper Right - framing character cleanly)
+    const isMobile = width < 768;
+
+    // Star 1: Majestic Gold Star (framing character cleanly)
     const star1 = new THREE.Mesh(starGeomBig, goldMaterial);
-    star1.position.set(5.2, 3.5, 0);
     star1.rotation.z = 0.2;
     scene.add(star1);
 
-    // Star 2: Emerald Sparkle (Lower Left - balancing typography & metrics)
+    // Star 2: Emerald Sparkle (balancing typography & metrics)
     const star2 = new THREE.Mesh(starGeomSmall, emeraldMaterial);
-    star2.position.set(-7.5, -2.8, 1.2);
     star2.rotation.z = -0.3;
     scene.add(star2);
 
-    // Star 3: Deep Navy Architectural Star (Upper Left Open Margin - clear of headline)
+    // Star 3: Deep Navy Architectural Star (clear of headline)
     const star3 = new THREE.Mesh(starGeomSmall, navyAccentMaterial);
-    star3.position.set(-10.2, 5.2, -2);
     star3.rotation.z = 0.4;
     scene.add(star3);
 
-    // Star 4: Warm Gold Accent Star (Mid Right)
+    // Star 4: Warm Gold Accent Star
     const star4 = new THREE.Mesh(starGeomSmall, goldMaterial);
-    star4.position.set(7.5, -1.8, -1.5);
     star4.rotation.z = -0.15;
     scene.add(star4);
 
@@ -136,18 +134,55 @@ export default function HeroThreeCanvas() {
     const sphereGeomSmall = new THREE.SphereGeometry(0.2, 22, 22);
 
     const goldSphere = new THREE.Mesh(sphereGeomBig, goldMaterial);
-    goldSphere.position.set(5.8, -4.2, 0.8);
     scene.add(goldSphere);
 
     const emeraldSphere = new THREE.Mesh(sphereGeomSmall, emeraldMaterial);
-    emeraldSphere.position.set(-5.5, -4.8, 0.5);
     scene.add(emeraldSphere);
 
     const navySphere = new THREE.Mesh(sphereGeomSmall, navyAccentMaterial);
-    navySphere.position.set(-8.2, 1.2, -2);
     scene.add(navySphere);
 
-    // 7. Interactive Mouse Parallax
+    const applyLayout = (mobile: boolean) => {
+      if (mobile) {
+        camera.position.z = 19;
+        star1.position.set(2.4, 4.6, 0);
+        star1.scale.setScalar(0.72);
+
+        star2.position.set(-2.2, -4.5, 1.0);
+        star2.scale.setScalar(0.72);
+
+        star3.position.set(-2.4, 6.0, -2);
+        star3.scale.setScalar(0.65);
+
+        star4.position.set(2.3, -2.8, -1.2);
+        star4.scale.setScalar(0.68);
+
+        goldSphere.position.set(2.2, -5.6, 0.6);
+        emeraldSphere.position.set(-1.8, -6.0, 0.4);
+        navySphere.position.set(-2.0, 3.0, -2);
+      } else {
+        camera.position.z = 18;
+        star1.position.set(5.2, 3.5, 0);
+        star1.scale.setScalar(1);
+
+        star2.position.set(-7.5, -2.8, 1.2);
+        star2.scale.setScalar(1);
+
+        star3.position.set(-10.2, 5.2, -2);
+        star3.scale.setScalar(1);
+
+        star4.position.set(7.5, -1.8, -1.5);
+        star4.scale.setScalar(1);
+
+        goldSphere.position.set(5.8, -4.2, 0.8);
+        emeraldSphere.position.set(-5.5, -4.8, 0.5);
+        navySphere.position.set(-8.2, 1.2, -2);
+      }
+    };
+
+    applyLayout(isMobile);
+
+    // 7. Interactive Mouse & Touch Parallax
     let mouseX = 0;
     let mouseY = 0;
     let targetX = 0;
@@ -160,7 +195,16 @@ export default function HeroThreeCanvas() {
       mouseY = (e.clientY - windowHalfY) * 0.001;
     };
 
+    const handleTouchMove = (e: TouchEvent) => {
+      if (e.touches.length === 0) return;
+      const windowHalfX = window.innerWidth / 2;
+      const windowHalfY = window.innerHeight / 2;
+      mouseX = (e.touches[0].clientX - windowHalfX) * 0.0012;
+      mouseY = (e.touches[0].clientY - windowHalfY) * 0.0012;
+    };
+
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
+    window.addEventListener("touchmove", handleTouchMove, { passive: true });
 
     // 8. Animation Loop with Visibility / Intersection Pause Check
     let isVisible = true;
@@ -232,12 +276,14 @@ export default function HeroThreeCanvas() {
       camera.aspect = newW / newH;
       camera.updateProjectionMatrix();
       renderer.setSize(newW, newH);
+      applyLayout(newW < 768);
     };
 
     window.addEventListener("resize", handleResize);
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("touchmove", handleTouchMove);
       window.removeEventListener("resize", handleResize);
       observer.disconnect();
       cancelAnimationFrame(animationFrameId);
