@@ -117,10 +117,10 @@ export default function HeroSection() {
           className="lg:col-span-6 flex flex-col items-start justify-center text-left order-2 lg:order-1 pt-2 sm:pt-4 lg:pt-0"
         >
           
-          {/* Top Domain Handle Badge (Exact Canva text: @MINGPORTFOLILO.COM) */}
+          {/* Top Domain Handle Badge (@MINGSTAR.SITE) */}
           <div className="inline-flex items-center gap-2 mb-4 sm:mb-6 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-slate-900/5 border border-slate-900/10 text-[11px] sm:text-xs font-mono font-bold tracking-wider text-[#0A2540]">
             <span className="w-1.5 h-1.5 rounded-full bg-[#F59E0B]" />
-            @MINGPORTFOLILO.COM
+            @MINGSTAR.SITE
           </div>
 
           {/* Main Giant Headline: MY PORTFOLIO */}

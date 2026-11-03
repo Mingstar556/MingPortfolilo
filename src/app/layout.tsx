@@ -29,7 +29,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://mingportfolilo.com"),
+  metadataBase: new URL("https://mingstar.site"),
   title: "Ming Star | Full-Stack Web Developer & Content Creator",
   description:
     "Official portfolio of Ming Star. Crafting high-performance web applications, interactive 3D experiences, and tech media content.",
