@@ -115,43 +115,43 @@ export default function ServicesSection() {
         </FadeUp>
 
         {/* Engagement Models Cards */}
-        <StaggerContainer className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 mb-12 sm:mb-16" staggerDelay={0.12}>
+        <StaggerContainer className="grid grid-cols-1 lg:grid-cols-3 gap-5 sm:gap-8 mb-8 sm:mb-16" staggerDelay={0.12}>
           {engagementModels.map((model) => (
             <StaggerItem
               key={model.id}
-              className={`rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10 flex flex-col justify-between transition-all duration-300 relative ${
+              className={`rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-10 flex flex-col justify-between transition-all duration-300 relative ${
                 model.popular
                   ? "bg-[#0A2540] text-white shadow-2xl border-2 border-amber-400 sm:scale-[1.02] hover:-translate-y-1.5"
                   : "bg-white text-[#0A2540] border border-slate-200/90 shadow-lg shadow-slate-900/5 hover:shadow-xl hover:border-slate-300 hover:-translate-y-1"
               }`}
             >
               {model.popular && (
-                <div className="absolute -top-3.5 left-6 sm:left-8 px-3.5 sm:px-4 py-1 rounded-full bg-amber-400 text-[#0A2540] text-[11px] sm:text-xs font-mono font-bold tracking-wider shadow-md uppercase">
+                <div className="absolute -top-3 left-5 sm:left-8 px-3 sm:px-4 py-0.5 sm:py-1 rounded-full bg-amber-400 text-[#0A2540] text-[10px] sm:text-xs font-mono font-bold tracking-wider shadow-md uppercase">
                   Most Requested
                 </div>
               )}
 
               <div>
-                <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center justify-between mb-3 sm:mb-4">
                   <span
-                    className={`text-[11px] font-mono uppercase tracking-widest font-semibold ${
+                    className={`text-[10px] sm:text-[11px] font-mono uppercase tracking-widest font-semibold ${
                       model.popular ? "text-amber-400" : "text-slate-500"
                     }`}
                   >
                     {model.badge}
                   </span>
                   <span
-                    className={`text-xs font-mono font-semibold flex items-center gap-1.5 px-3 py-1 rounded-full ${
+                    className={`text-[11px] sm:text-xs font-mono font-semibold flex items-center gap-1 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full ${
                       model.popular ? "bg-white/10 text-emerald-400" : "bg-slate-100 text-slate-700"
                     }`}
                   >
-                    <Clock className="w-3.5 h-3.5" />
+                    <Clock className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                     {model.timeline}
                   </span>
                 </div>
 
                 <h3
-                  className={`font-display font-black text-xl sm:text-2xl lg:text-3xl mt-1 mb-3 ${
+                  className={`font-display font-black text-lg sm:text-2xl lg:text-3xl mt-0.5 sm:mt-1 mb-1.5 sm:mb-3 ${
                     model.popular ? "text-white" : "text-[#0A2540]"
                   }`}
                 >
@@ -159,7 +159,7 @@ export default function ServicesSection() {
                 </h3>
 
                 <p
-                  className={`text-xs sm:text-sm leading-relaxed mb-6 sm:mb-8 ${
+                  className={`text-xs sm:text-sm leading-relaxed mb-4 sm:mb-8 ${
                     model.popular ? "text-slate-300" : "text-slate-600"
                   }`}
                 >
@@ -167,24 +167,29 @@ export default function ServicesSection() {
                 </p>
 
                 {/* Scope Breakdown */}
-                <div className="space-y-3 sm:space-y-3.5 mb-6 sm:mb-8">
+                <div className="space-y-2 sm:space-y-3.5 mb-4 sm:mb-8">
                   <div
-                    className={`text-[10px] font-mono uppercase font-bold tracking-wider mb-2 ${
+                    className={`text-[9px] sm:text-[10px] font-mono uppercase font-bold tracking-wider mb-1.5 sm:mb-2 ${
                       model.popular ? "text-amber-400" : "text-slate-500"
                     }`}
                   >
                     What&apos;s Included In Scope:
                   </div>
                   {model.scope.map((item, i) => (
-                    <div key={i} className="flex items-start gap-2.5 sm:gap-3">
+                    <div
+                      key={i}
+                      className={`items-start gap-2 sm:gap-3 ${
+                        i >= 4 ? "hidden sm:flex" : "flex"
+                      }`}
+                    >
                       <div
-                        className={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-0.5 ${
+                        className={`w-4 h-4 sm:w-5 sm:h-5 rounded-full flex items-center justify-center shrink-0 mt-0.5 ${
                           model.popular
                             ? "bg-amber-400 text-[#0A2540]"
                             : "bg-emerald-50 text-emerald-600 border border-emerald-200"
                         }`}
                       >
-                        <Check className="w-3.5 h-3.5 stroke-[3]" />
+                        <Check className="w-3 h-3 sm:w-3.5 sm:h-3.5 stroke-[3]" />
                       </div>
                       <span
                         className={`text-xs sm:text-sm ${
@@ -201,7 +206,7 @@ export default function ServicesSection() {
               {/* Action Button */}
               <a
                 href="#contact"
-                className={`w-full py-3.5 sm:py-4 min-h-[48px] rounded-full font-bold text-xs font-mono tracking-wider uppercase flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer shadow-md active:scale-95 ${
+                className={`w-full py-3 sm:py-4 min-h-[44px] sm:min-h-[48px] rounded-full font-bold text-xs font-mono tracking-wider uppercase flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer shadow-md active:scale-95 ${
                   model.popular
                     ? "bg-amber-400 hover:bg-amber-300 text-[#0A2540] shadow-amber-400/20"
                     : "bg-[#0A2540] hover:bg-[#07192C] text-white shadow-slate-900/10"

@@ -116,17 +116,17 @@ export default function ProjectsSection() {
           </div>
         </FadeUp>
 
-        {/* Clean, Spacious Project Cards with Browser Preview Mockup Boxes */}
-        <div className="space-y-8 sm:space-y-12">
+        {/* Clean, Compact on Mobile, Spacious on Desktop Project Cards */}
+        <div className="space-y-6 sm:space-y-12">
           {realProjects.map((proj, idx) => {
             const isEven = idx % 2 === 0;
             return (
               <ScrollScale
                 key={proj.id}
                 delay={idx * 0.12}
-                className="bg-slate-50/90 rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-12 border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-amber-400/50 transition-all duration-300 relative group overflow-hidden"
+                className="bg-slate-50/90 rounded-2xl sm:rounded-3xl p-4 sm:p-8 lg:p-12 border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-amber-400/50 transition-all duration-300 relative group overflow-hidden"
               >
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-center">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 lg:gap-12 items-center">
                   
                   {/* Left or Right: Browser Mockup Window Showing the Homepage */}
                   <div
@@ -154,7 +154,7 @@ export default function ProjectsSection() {
                         aria-label={`Open live website: ${proj.title}`}
                       >
                         {/* macOS Browser Window Top Bar */}
-                        <div className="bg-[#0B1E32] border-b border-white/10 px-3 sm:px-4 py-2 sm:py-2.5 flex items-center justify-between gap-2 sm:gap-3 select-none">
+                        <div className="bg-[#0B1E32] border-b border-white/10 px-2.5 sm:px-4 py-1.5 sm:py-2.5 flex items-center justify-between gap-2 sm:gap-3 select-none">
                           {/* Traffic light window controls */}
                           <div className="flex items-center gap-1.5 shrink-0">
                             <span className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#FF5F56] inline-block shadow-xs" />
@@ -163,14 +163,14 @@ export default function ProjectsSection() {
                           </div>
 
                           {/* SSL URL Address Bar */}
-                          <div className="flex-1 max-w-[170px] xs:max-w-[210px] sm:max-w-sm mx-auto bg-slate-950/80 rounded-full px-2.5 sm:px-3 py-0.5 sm:py-1 flex items-center justify-center gap-1.5 text-[10px] sm:text-[11px] font-mono text-slate-300 border border-white/5">
+                          <div className="flex-1 max-w-[170px] xs:max-w-[210px] sm:max-w-sm mx-auto bg-slate-950/80 rounded-full px-2 sm:px-3 py-0.5 sm:py-1 flex items-center justify-center gap-1.5 text-[9px] sm:text-[11px] font-mono text-slate-300 border border-white/5">
                             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0" />
                             <span className="text-slate-500 hidden xs:inline">https://</span>
                             <span className="truncate text-slate-200 font-medium">{proj.displayUrl}</span>
                           </div>
 
                           {/* Live indicator & external link */}
-                          <div className="flex items-center gap-1.5 text-[9px] sm:text-[10px] font-mono font-bold text-amber-400 uppercase tracking-widest shrink-0">
+                          <div className="flex items-center gap-1 text-[9px] sm:text-[10px] font-mono font-bold text-amber-400 uppercase tracking-widest shrink-0">
                             <span className="relative flex h-1.5 w-1.5">
                               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                               <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-400" />
@@ -180,8 +180,8 @@ export default function ProjectsSection() {
                           </div>
                         </div>
 
-                        {/* Homepage Screenshot Viewport */}
-                        <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-950">
+                        {/* Homepage Screenshot Viewport - Tighter aspect ratio on mobile */}
+                        <div className="relative aspect-[16/9] sm:aspect-[16/10] w-full overflow-hidden bg-slate-950">
                           <Image
                             src={proj.imageSrc}
                             alt={`${proj.title} homepage preview`}
@@ -190,8 +190,8 @@ export default function ProjectsSection() {
                             className="object-cover object-top transition-transform duration-500 ease-out group-hover/browser:scale-105"
                           />
                           {/* Interactive Hover Pill Overlay */}
-                          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent opacity-0 group-hover/browser:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
-                            <span className="px-4 py-2 rounded-full bg-amber-400 text-[#0A2540] font-mono text-xs font-bold shadow-xl flex items-center gap-2 transform translate-y-2 group-hover/browser:translate-y-0 transition-transform">
+                          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent opacity-0 group-hover/browser:opacity-100 transition-opacity duration-300 flex items-end justify-center p-3 sm:p-4">
+                            <span className="px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full bg-amber-400 text-[#0A2540] font-mono text-[11px] sm:text-xs font-bold shadow-xl flex items-center gap-2 transform translate-y-2 group-hover/browser:translate-y-0 transition-transform">
                               <span>Open Live Website</span>
                               <ExternalLink className="w-3.5 h-3.5" />
                             </span>
@@ -209,49 +209,56 @@ export default function ProjectsSection() {
                   >
                     <div>
                       {/* Index & Badges */}
-                      <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
-                        <span className="font-mono text-xl sm:text-3xl font-black text-[#0A2540] group-hover:text-amber-600 transition-colors">
+                      <div className="flex flex-wrap items-center gap-1.5 sm:gap-3 mb-2 sm:mb-4">
+                        <span className="font-mono text-lg sm:text-3xl font-black text-[#0A2540] group-hover:text-amber-600 transition-colors">
                           {proj.number}
                         </span>
-                        <span className="text-[11px] sm:text-xs font-mono uppercase tracking-widest px-2.5 sm:px-3 py-1 rounded-full bg-white border border-slate-200 text-[#0A2540] font-bold shadow-xs">
+                        <span className="text-[10px] sm:text-xs font-mono uppercase tracking-widest px-2 sm:px-3 py-0.5 sm:py-1 rounded-full bg-white border border-slate-200 text-[#0A2540] font-bold shadow-xs">
                           {proj.category}
                         </span>
-                        <span className="text-[10px] sm:text-[11px] font-mono font-semibold text-emerald-700 px-2.5 sm:px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200">
+                        <span className="text-[9px] sm:text-[11px] font-mono font-semibold text-emerald-700 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full bg-emerald-50 border border-emerald-200">
                           {proj.badge}
                         </span>
                       </div>
 
-                      <h3 className="font-display font-black text-xl sm:text-2xl lg:text-3xl text-[#0A2540] mb-2 group-hover:text-amber-600 transition-colors leading-snug">
+                      <h3 className="font-display font-black text-lg sm:text-2xl lg:text-3xl text-[#0A2540] mb-1.5 sm:mb-2 group-hover:text-amber-600 transition-colors leading-snug">
                         {proj.title}
                       </h3>
 
-                      <p className="text-slate-500 text-xs sm:text-sm font-mono mb-3 sm:mb-4">
+                      <p className="text-slate-500 text-xs sm:text-sm font-mono mb-2 sm:mb-4 line-clamp-1 sm:line-clamp-none">
                         {proj.tagline}
                       </p>
 
-                      <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-4 sm:mb-5 font-sans">
+                      <p className="text-slate-600 text-xs sm:text-base leading-relaxed mb-3 sm:mb-5 font-sans line-clamp-2 sm:line-clamp-none">
                         {proj.description}
                       </p>
 
-                      {/* Engineering Highlights */}
-                      <div className="space-y-2 mb-5 sm:mb-6 bg-white p-3.5 sm:p-5 rounded-2xl border border-slate-200/80">
-                        <div className="text-[10px] sm:text-[11px] font-mono uppercase font-bold text-slate-700 tracking-wider">
-                          Key Engineering Highlights
+                      {/* Engineering Highlights - Show top 2 on mobile to avoid endless scrolling */}
+                      <div className="space-y-1.5 sm:space-y-2 mb-3 sm:mb-6 bg-white p-2.5 sm:p-5 rounded-xl sm:rounded-2xl border border-slate-200/80">
+                        <div className="text-[9px] sm:text-[11px] font-mono uppercase font-bold text-slate-700 tracking-wider">
+                          Key Deliverables
                         </div>
                         {proj.highlights.map((h, i) => (
-                          <div key={i} className="flex items-start gap-2 text-xs sm:text-sm text-slate-600">
-                            <CheckCircle2 className="w-4 h-4 text-emerald-500 mt-0.5 shrink-0" />
+                          <div
+                            key={i}
+                            className={`flex items-start gap-2 text-xs sm:text-sm text-slate-600 ${
+                              i >= 2 ? "hidden sm:flex" : "flex"
+                            }`}
+                          >
+                            <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-500 mt-0.5 shrink-0" />
                             <span>{h}</span>
                           </div>
                         ))}
                       </div>
 
                       {/* Tech Chips */}
-                      <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-5 sm:mb-6">
-                        {proj.tech.map((t) => (
+                      <div className="flex flex-wrap gap-1 sm:gap-2 mb-3.5 sm:mb-6">
+                        {proj.tech.map((t, idx) => (
                           <span
                             key={t}
-                            className="px-2.5 sm:px-3 py-1 rounded-full bg-white border border-slate-200 text-[11px] sm:text-xs font-mono font-semibold text-slate-700 shadow-xs"
+                            className={`px-2 sm:px-3 py-0.5 sm:py-1 rounded-full bg-white border border-slate-200 text-[10px] sm:text-xs font-mono font-semibold text-slate-700 shadow-xs ${
+                              idx >= 3 ? "hidden xs:inline-block" : "inline-block"
+                            }`}
                           >
                             {t}
                           </span>
@@ -259,26 +266,26 @@ export default function ProjectsSection() {
                       </div>
                     </div>
 
-                    {/* Action Buttons Row - Stacked full-width on mobile */}
-                    <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 pt-4 border-t border-slate-200/70">
+                    {/* Action Buttons Row - Compact on mobile */}
+                    <div className="flex flex-row items-center gap-2 sm:gap-3 pt-3 sm:pt-4 border-t border-slate-200/70">
                       <a
                         href={proj.liveUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex items-center justify-center gap-2 px-6 py-3.5 min-h-[48px] rounded-full bg-[#0A2540] hover:bg-[#07192C] text-white text-xs font-bold font-mono tracking-wider shadow-md active:scale-95 transition-all cursor-pointer"
+                        className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 sm:gap-2 px-4 sm:px-6 py-2.5 sm:py-3.5 min-h-[42px] sm:min-h-[48px] rounded-full bg-[#0A2540] hover:bg-[#07192C] text-white text-[11px] sm:text-xs font-bold font-mono tracking-wider shadow-md active:scale-95 transition-all cursor-pointer"
                       >
-                        <span>VISIT LIVE SITE</span>
-                        <ArrowUpRight className="w-4 h-4 text-amber-400" />
+                        <span>VISIT SITE</span>
+                        <ArrowUpRight className="w-3.5 h-3.5 text-amber-400" />
                       </a>
 
                       <a
                         href={proj.githubUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex items-center justify-center gap-2 px-5 py-3.5 min-h-[48px] rounded-full bg-white hover:bg-slate-100 text-[#0A2540] text-xs font-bold font-mono tracking-wider border border-slate-300 shadow-xs active:scale-95 transition-all cursor-pointer"
+                        className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-5 py-2.5 sm:py-3.5 min-h-[42px] sm:min-h-[48px] rounded-full bg-white hover:bg-slate-100 text-[#0A2540] text-[11px] sm:text-xs font-bold font-mono tracking-wider border border-slate-300 shadow-xs active:scale-95 transition-all cursor-pointer"
                       >
-                        <GithubIcon className="w-4 h-4" />
-                        <span>VIEW GITHUB REPO</span>
+                        <GithubIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                        <span>GITHUB</span>
                       </a>
                     </div>
                   </div>
