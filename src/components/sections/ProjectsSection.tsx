@@ -62,8 +62,27 @@ const realProjects: RealProject[] = [
     displayUrl: "starbakery-wheat.vercel.app",
   },
   {
-    id: "visibility-studio",
+    id: "star-fashion",
     number: "03",
+    title: "Star Fashion • Luxury Streetwear & E-Commerce",
+    category: "Full-Stack E-Commerce & Merchandising",
+    tagline: "High-contrast darkroom aesthetic, live cart state, and Telegram order routing.",
+    description: "Full-cycle digital fashion store built with Next.js App Router, Framer Motion, and Tailwind CSS. Features category filtering, dynamic shopping cart drawer, and automated order confirmation dispatch.",
+    highlights: [
+      "Dynamic product catalog with instant category filtering & search",
+      "Interactive sliding cart drawer with live subtotal calculations",
+      "Automated order dispatch & admin inventory synchronization",
+    ],
+    tech: ["Next.js App Router", "Framer Motion", "Tailwind CSS", "Zustand", "TypeScript"],
+    liveUrl: "https://starfashion-one.vercel.app/",
+    githubUrl: "https://github.com/Mingstar556/Starfashionwork",
+    badge: "Live Production Store",
+    imageSrc: "/assets/projects/starfashion.webp",
+    displayUrl: "starfashion-one.vercel.app",
+  },
+  {
+    id: "visibility-studio",
+    number: "04",
     title: "Visibility Studio | Photography & Soundstage",
     category: "Creative Media & Soundstage Studio",
     tagline: "Dark-themed editorial UI engineered for commercial videography.",
@@ -111,7 +130,7 @@ export default function ProjectsSection() {
             </div>
 
             <div className="text-xs font-mono text-slate-500 uppercase tracking-widest font-semibold">
-              3 Production Projects
+              4 Production Projects
             </div>
           </div>
         </FadeUp>
@@ -142,6 +161,8 @@ export default function ProjectsSection() {
                             ? "bg-amber-500/30"
                             : proj.id === "star-bakery"
                             ? "bg-yellow-500/30"
+                            : proj.id === "star-fashion"
+                            ? "bg-purple-500/30"
                             : "bg-cyan-500/30"
                         }`}
                       />
