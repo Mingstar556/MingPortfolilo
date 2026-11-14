@@ -79,6 +79,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/icon.svg" type="image/svg+xml" />
         <link rel="alternate icon" href="/favicon.ico" />
+        <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests" />
       </head>
       <body className="min-h-screen bg-[#FBFCFD] text-[#0A2540] font-sans selection:bg-[#F59E0B] selection:text-[#0A2540]">
         {children}

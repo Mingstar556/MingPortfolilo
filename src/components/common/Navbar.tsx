@@ -360,7 +360,7 @@ export default function Navbar() {
               <a
                 href="https://t.me/mingstar01"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="flex flex-col items-center justify-center py-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 active:scale-95 transition-all text-center"
               >
                 <TelegramIcon className="w-4 h-4 text-sky-400 mb-1" />
@@ -376,7 +376,7 @@ export default function Navbar() {
               <a
                 href="https://www.tiktok.com/@ming.star"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="flex flex-col items-center justify-center py-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 active:scale-95 transition-all text-center"
               >
                 <TiktokIcon className="w-4 h-4 text-rose-400 mb-1" />
@@ -385,7 +385,7 @@ export default function Navbar() {
               <a
                 href="https://github.com/mingstar556"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="flex flex-col items-center justify-center py-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 active:scale-95 transition-all text-center"
               >
                 <GithubIcon className="w-4 h-4 text-white mb-1" />

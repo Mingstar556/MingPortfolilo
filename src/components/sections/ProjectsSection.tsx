@@ -170,7 +170,7 @@ export default function ProjectsSection() {
                       <a
                         href={proj.liveUrl}
                         target="_blank"
-                        rel="noreferrer"
+                        rel="noopener noreferrer"
                         className="group/browser block relative rounded-xl sm:rounded-2xl overflow-hidden bg-slate-900 border border-slate-700/80 shadow-2xl hover:shadow-[0_20px_50px_rgba(10,37,64,0.22)] transition-all duration-300 transform group-hover/browser:scale-[1.015]"
                         aria-label={`Open live website: ${proj.title}`}
                       >
@@ -292,7 +292,7 @@ export default function ProjectsSection() {
                       <a
                         href={proj.liveUrl}
                         target="_blank"
-                        rel="noreferrer"
+                        rel="noopener noreferrer"
                         className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 sm:gap-2 px-4 sm:px-6 py-2.5 sm:py-3.5 min-h-[42px] sm:min-h-[48px] rounded-full bg-[#0A2540] hover:bg-[#07192C] text-white text-[11px] sm:text-xs font-bold font-mono tracking-wider shadow-md active:scale-95 transition-all cursor-pointer"
                       >
                         <span>VISIT SITE</span>
@@ -302,7 +302,7 @@ export default function ProjectsSection() {
                       <a
                         href={proj.githubUrl}
                         target="_blank"
-                        rel="noreferrer"
+                        rel="noopener noreferrer"
                         className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-5 py-2.5 sm:py-3.5 min-h-[42px] sm:min-h-[48px] rounded-full bg-white hover:bg-slate-100 text-[#0A2540] text-[11px] sm:text-xs font-bold font-mono tracking-wider border border-slate-300 shadow-xs active:scale-95 transition-all cursor-pointer"
                       >
                         <GithubIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />

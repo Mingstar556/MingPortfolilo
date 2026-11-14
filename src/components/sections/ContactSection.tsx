@@ -134,7 +134,7 @@ export default function ContactSection() {
                   <a
                     href="https://t.me/mingstar01"
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     className="flex items-center justify-between p-3.5 sm:p-4 rounded-2xl bg-slate-50 hover:bg-sky-50/70 border border-slate-200/90 hover:border-sky-300 text-[#0A2540] transition-all group shadow-xs active:scale-[0.98] min-h-[52px]"
                   >
                     <div className="flex items-center gap-3">
@@ -174,7 +174,7 @@ export default function ContactSection() {
                   <a
                     href="https://www.tiktok.com/@ming.star"
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     className="flex items-center justify-between p-3.5 sm:p-4 rounded-2xl bg-slate-50 hover:bg-rose-50/70 border border-slate-200/90 hover:border-rose-300 text-[#0A2540] transition-all group shadow-xs active:scale-[0.98] min-h-[52px]"
                   >
                     <div className="flex items-center gap-3">
@@ -195,7 +195,7 @@ export default function ContactSection() {
                   <a
                     href="https://github.com/mingstar556"
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     className="flex items-center justify-between p-3.5 sm:p-4 rounded-2xl bg-slate-50 hover:bg-slate-100 border border-slate-200/90 hover:border-slate-300 text-[#0A2540] transition-all group shadow-xs active:scale-[0.98] min-h-[52px]"
                   >
                     <div className="flex items-center gap-3">

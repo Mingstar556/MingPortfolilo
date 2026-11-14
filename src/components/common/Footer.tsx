@@ -59,7 +59,7 @@ export default function Footer() {
             <a
               href="https://t.me/mingstar01"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="hover:text-sky-400 transition-colors p-1"
             >
               TG: @mingstar01
@@ -68,7 +68,7 @@ export default function Footer() {
             <a
               href="https://www.tiktok.com/@ming.star"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="hover:text-rose-400 transition-colors p-1"
             >
               TikTok: @ming.star
@@ -84,7 +84,7 @@ export default function Footer() {
             <a
               href="https://github.com/mingstar556"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="hover:text-white transition-colors p-1"
             >
               GitHub
