@@ -1,13 +1,23 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { motion } from "motion/react";
+import { motion, useScroll, useTransform } from "motion/react";
 import { ArrowDown, Code2, Sparkles } from "lucide-react";
 import HeroThreeCanvas from "@/components/canvas/HeroThreeCanvas";
 import InkRevealCharacter from "@/components/hero/InkRevealCharacter";
 
 export default function HeroSection() {
   const heroRef = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+
+  const heroContentY = useTransform(scrollYProgress, [0, 1], [0, 90]);
+  const heroCharacterY = useTransform(scrollYProgress, [0, 1], [0, 45]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0.1]);
+  const starsParallaxY = useTransform(scrollYProgress, [0, 1], [0, -70]);
 
   useEffect(() => {
     const hero = heroRef.current;
@@ -62,27 +72,29 @@ export default function HeroSection() {
       {/* 3D Three.js Interactive Floating Elements (Subtle & Refined) */}
       <HeroThreeCanvas />
 
-      {/* Decorative Floating Sparkle Stars & Beads (Pure CSS transform via GPU variables) */}
-      <div
-        className="absolute top-24 sm:top-28 right-[8%] sm:right-[36%] w-5 h-5 sm:w-7 sm:h-7 bg-[#F59E0B] sparkle-star animate-float pointer-events-none z-10 shadow-sm"
-        style={{ transform: "translate(calc(var(--mx, 0px) * -0.6), calc(var(--my, 0px) * -0.6))" }}
-      />
-      <div
-        className="absolute top-16 sm:top-20 right-[4%] sm:right-[10%] w-6 h-6 sm:w-8 sm:h-8 bg-[#F97316] sparkle-star animate-float-delayed pointer-events-none z-10"
-        style={{ transform: "translate(calc(var(--mx, 0px) * 0.8), calc(var(--my, 0px) * 0.8))" }}
-      />
-      <div
-        className="absolute top-1/2 right-[5%] w-7 h-7 rounded-full bg-[#0A2540] shadow-md pointer-events-none z-10 opacity-75 hidden sm:block"
-        style={{ transform: "translate(calc(var(--mx, 0px) * -0.5), calc(var(--my, 0px) * -0.5))" }}
-      />
-      <div
-        className="absolute bottom-32 left-[46%] w-8 h-8 bg-[#10B981] sparkle-star animate-float pointer-events-none z-10 shadow-sm hidden sm:block"
-        style={{ transform: "translate(calc(var(--mx, 0px) * 0.5), calc(var(--my, 0px) * 0.5))" }}
-      />
-      <div
-        className="absolute top-36 left-[8%] w-6 h-6 rounded-full bg-[#F59E0B] shadow-sm animate-float-delayed pointer-events-none z-10 opacity-70 hidden sm:block"
-        style={{ transform: "translate(calc(var(--mx, 0px) * 0.7), calc(var(--my, 0px) * 0.7))" }}
-      />
+      {/* Decorative Floating Sparkle Stars & Beads with Scroll Parallax */}
+      <motion.div style={{ y: starsParallaxY }} className="absolute inset-0 pointer-events-none z-10">
+        <div
+          className="absolute top-24 sm:top-28 right-[8%] sm:right-[36%] w-5 h-5 sm:w-7 sm:h-7 bg-[#F59E0B] sparkle-star animate-float pointer-events-none shadow-sm"
+          style={{ transform: "translate(calc(var(--mx, 0px) * -0.6), calc(var(--my, 0px) * -0.6))" }}
+        />
+        <div
+          className="absolute top-16 sm:top-20 right-[4%] sm:right-[10%] w-6 h-6 sm:w-8 sm:h-8 bg-[#F97316] sparkle-star animate-float-delayed pointer-events-none"
+          style={{ transform: "translate(calc(var(--mx, 0px) * 0.8), calc(var(--my, 0px) * 0.8))" }}
+        />
+        <div
+          className="absolute top-1/2 right-[5%] w-7 h-7 rounded-full bg-[#0A2540] shadow-md pointer-events-none opacity-75 hidden sm:block"
+          style={{ transform: "translate(calc(var(--mx, 0px) * -0.5), calc(var(--my, 0px) * -0.5))" }}
+        />
+        <div
+          className="absolute bottom-32 left-[46%] w-8 h-8 bg-[#10B981] sparkle-star animate-float pointer-events-none shadow-sm hidden sm:block"
+          style={{ transform: "translate(calc(var(--mx, 0px) * 0.5), calc(var(--my, 0px) * 0.5))" }}
+        />
+        <div
+          className="absolute top-36 left-[8%] w-6 h-6 rounded-full bg-[#F59E0B] shadow-sm animate-float-delayed pointer-events-none opacity-70 hidden sm:block"
+          style={{ transform: "translate(calc(var(--mx, 0px) * 0.7), calc(var(--my, 0px) * 0.7))" }}
+        />
+      </motion.div>
 
       {/* Decorative Dot Matrix: Left Side (8x5 dots) */}
       <div
@@ -108,6 +120,7 @@ export default function HeroSection() {
         
         {/* Left Column: Bold Statement Typography matching the Canva PDF */}
         <motion.div
+          style={{ y: heroContentY, opacity: heroOpacity }}
           initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
@@ -179,6 +192,7 @@ export default function HeroSection() {
 
         {/* Right Column: Clean Cutout Photo + Ink Reveal + Fitted Arch Backdrop */}
         <motion.div
+          style={{ y: heroCharacterY, opacity: heroOpacity }}
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.25 }}

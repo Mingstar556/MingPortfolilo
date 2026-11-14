@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { ExternalLink, ArrowUpRight, CheckCircle2 } from "lucide-react";
 import { GithubIcon } from "@/components/common/BrandIcons";
-import { FadeUp } from "@/components/common/ScrollReveal";
+import { FadeUp, ScrollScale } from "@/components/common/ScrollReveal";
 
 interface RealProject {
   id: string;
@@ -113,7 +113,7 @@ export default function ProjectsSection() {
           {realProjects.map((proj, idx) => {
             const isEven = idx % 2 === 0;
             return (
-              <FadeUp
+              <ScrollScale
                 key={proj.id}
                 delay={idx * 0.12}
                 className="bg-slate-50/90 rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-12 border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-amber-400/50 transition-all duration-300 relative group overflow-hidden"
@@ -259,7 +259,7 @@ export default function ProjectsSection() {
                   </div>
 
                 </div>
-              </FadeUp>
+              </ScrollScale>
             );
           })}
         </div>

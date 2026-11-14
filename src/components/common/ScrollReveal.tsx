@@ -1,7 +1,7 @@
 "use client";
 
-import React from "react";
-import { motion, type HTMLMotionProps, type Variants } from "motion/react";
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform, type HTMLMotionProps, type Variants } from "motion/react";
 
 interface ScrollRevealProps extends HTMLMotionProps<"div"> {
   children: React.ReactNode;
@@ -127,6 +127,54 @@ export function PopUp({
     >
       {children}
     </motion.div>
+  );
+}
+
+export function ScrollScale({
+  children,
+  delay = 0,
+  duration = 0.7,
+  className = "",
+  amount = 0.15,
+  once = true,
+  ...props
+}: ScrollRevealProps) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 36, scale: 0.95 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once, amount, margin: "0px 0px -40px 0px" }}
+      transition={{ duration, ease: customEase, delay }}
+      className={className}
+      {...props}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+interface ScrollParallaxProps {
+  children: React.ReactNode;
+  offset?: number;
+  className?: string;
+}
+
+export function ScrollParallax({
+  children,
+  offset = 35,
+  className = "",
+}: ScrollParallaxProps) {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+  const y = useTransform(scrollYProgress, [0, 1], [-offset, offset]);
+
+  return (
+    <div ref={ref} className={className}>
+      <motion.div style={{ y }}>{children}</motion.div>
+    </div>
   );
 }
 
