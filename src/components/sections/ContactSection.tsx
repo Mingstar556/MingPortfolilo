@@ -13,7 +13,7 @@ export default function ContactSection() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    budget: "$1,000 - $3,000",
+    budget: "$200 - $350",
     message: "",
   });
 
@@ -286,18 +286,18 @@ export default function ContactSection() {
 
                 <div>
                   <label className="block text-xs font-mono font-bold uppercase tracking-wider text-slate-700 mb-1.5 sm:mb-2">
-                    Estimated Project Budget
+                    Estimated Project Budget ($50 - $500)
                   </label>
                   <select
                     value={formData.budget}
                     onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
                     className="w-full px-4 py-3 sm:py-3.5 rounded-2xl bg-white border border-slate-200 text-base sm:text-sm text-[#0A2540] focus:outline-none focus:ring-2 focus:ring-amber-400/80 focus:border-amber-400 cursor-pointer shadow-xs font-mono"
                   >
-                    <option value="Under $1,000">Under $1,000 (Focused Feature / Audit / Landing Page)</option>
-                    <option value="$1,000 - $3,000">$1,000 - $3,000 (Interactive Website / Redesign)</option>
-                    <option value="$3,000 - $6,000">$3,000 - $6,000 (Full-Stack Web App / MVP Build)</option>
-                    <option value="$6,000+">$6,000+ (Custom Enterprise Platform / Retainer)</option>
-                    <option value="Flexible">Flexible / Discuss Project Scope</option>
+                    <option value="$50 - $100">$50 - $100 (Single Feature / Bug Fix / Quick Consultation)</option>
+                    <option value="$100 - $200">$100 - $200 (Component Design / Motion / Audit Sprint)</option>
+                    <option value="$200 - $350">$200 - $350 (Landing Page / Interactive Website Redesign)</option>
+                    <option value="$350 - $500">$350 - $500 (Full-Stack MVP / Complete Web Application)</option>
+                    <option value="Flexible ($50 - $500)">Flexible ($50 - $500 Scope)</option>
                   </select>
                 </div>
 
