@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import { ArrowDown, Code2, Sparkles } from "lucide-react";
 import HeroThreeCanvas from "@/components/canvas/HeroThreeCanvas";
+import InteractiveNetworkBackground from "@/components/canvas/InteractiveNetworkBackground";
 import InkRevealCharacter from "@/components/hero/InkRevealCharacter";
 
 export default function HeroSection() {
@@ -69,6 +70,9 @@ export default function HeroSection() {
       ref={heroRef}
       className="relative min-h-[100svh] w-full pt-20 xs:pt-24 sm:pt-28 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-start bg-graph-grid overflow-hidden will-change-contents"
     >
+      {/* Meaningful Living Telemetry Grid & Data Packets */}
+      <InteractiveNetworkBackground />
+
       {/* 3D Three.js Interactive Floating Elements (Subtle & Refined) */}
       <HeroThreeCanvas />
 
@@ -128,9 +132,14 @@ export default function HeroSection() {
         >
           
           {/* Top Domain Handle Badge (@MINGSTAR.SITE) */}
-          <div className="inline-flex items-center gap-2 mb-4 sm:mb-6 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-slate-900/5 border border-slate-900/10 text-[11px] sm:text-xs font-mono font-bold tracking-wider text-[#0A2540]">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#F59E0B]" />
-            @MINGSTAR.SITE
+          <div className="inline-flex items-center gap-2.5 mb-4 sm:mb-6 px-3.5 py-1.5 rounded-full bg-slate-900/5 border border-slate-900/10 text-[11px] sm:text-xs font-mono font-bold tracking-wider text-[#0A2540] backdrop-blur-sm shadow-xs">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+            </span>
+            <span>@MINGSTAR.SITE</span>
+            <span className="text-slate-300">•</span>
+            <span className="text-emerald-700 font-semibold">AVAILABLE Q1/Q2</span>
           </div>
 
           {/* Main Giant Headline: MY PORTFOLIO */}

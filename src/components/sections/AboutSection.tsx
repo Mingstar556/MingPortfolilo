@@ -3,12 +3,14 @@
 import Image from "next/image";
 import { CheckCircle2 } from "lucide-react";
 import { FadeUp, FadeLeft, FadeRight } from "@/components/common/ScrollReveal";
+import InteractiveNetworkBackground from "@/components/canvas/InteractiveNetworkBackground";
 
 export default function AboutSection() {
   return (
     <section id="about" className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 relative bg-[#FBFCFD] overflow-hidden">
-      {/* Background Architectural Grid Lines */}
+      {/* Background Architectural Grid Lines with Live Telemetry Packets */}
       <div className="absolute inset-0 bg-graph-grid opacity-30 pointer-events-none" />
+      <InteractiveNetworkBackground />
 
       {/* Ambient Lighting Accents */}
       <div className="absolute -top-40 right-10 w-96 h-96 bg-amber-400/10 rounded-full blur-3xl pointer-events-none" />
@@ -69,8 +71,11 @@ export default function AboutSection() {
                   I partner directly with founders, growing companies, and design teams to build reliable web applications. You work directly with the engineer writing your code: no agency middlemen, no communication lag, and no unexpected delays. Every project is delivered with strict TypeScript typing, sub-second load times, and complete source code ownership.
                 </p>
 
-                {/* Real-time Code Telemetry Box */}
-                <div className="bg-slate-950/70 border border-slate-800 rounded-2xl p-4 sm:p-5 font-mono text-xs text-slate-300 space-y-2 mb-6 sm:mb-8 shadow-inner overflow-x-auto no-scrollbar">
+                {/* Real-time Code Telemetry Box with Live Scanning Laser */}
+                <div className="relative overflow-hidden bg-slate-950/80 border border-slate-800 rounded-2xl p-4 sm:p-5 font-mono text-xs text-slate-300 space-y-2 mb-6 sm:mb-8 shadow-inner overflow-x-auto no-scrollbar group/telemetry">
+                  {/* Live Telemetry Scan Line */}
+                  <div className="absolute inset-x-0 -top-full h-1/2 bg-gradient-to-b from-transparent via-cyan-400/15 to-transparent pointer-events-none animate-scan-telemetry" />
+
                   <div className="flex items-center justify-between pb-3 border-b border-slate-800/80 text-[11px] text-slate-400 min-w-[280px]">
                     <span className="flex items-center gap-2">
                       <span className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
@@ -78,7 +83,10 @@ export default function AboutSection() {
                       <span className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
                       <span className="ml-2 font-bold text-slate-200">freelance.standards.ts</span>
                     </span>
-                    <span className="text-amber-400 font-semibold">COMMERCIAL GRADE</span>
+                    <span className="text-amber-400 font-semibold flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                      <span>COMMERCIAL GRADE</span>
+                    </span>
                   </div>
                   <div className="min-w-[280px]">
                     <p className="text-amber-300 pt-1">
@@ -98,6 +106,7 @@ export default function AboutSection() {
                     </p>
                     <p className="pl-4">
                       communication: <span className="text-amber-300">&quot;Direct Async Slack / Telegram &bull; 24h SLA&quot;</span>,
+                      <span className="inline-block w-1.5 h-3.5 bg-amber-400 ml-1.5 animate-pulse align-middle" />
                     </p>
                     <p>&#125;;</p>
                   </div>

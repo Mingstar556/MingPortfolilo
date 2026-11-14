@@ -196,6 +196,19 @@ html.lenis, html.lenis body {
   }
 }
 
+@keyframes scanTelemetry {
+  0% {
+    top: -100%;
+  }
+  50%, 100% {
+    top: 200%;
+  }
+}
+
+.animate-scan-telemetry {
+  animation: scanTelemetry 4.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
 .animate-wave {
   animation: waveMove 3s linear infinite;
 }

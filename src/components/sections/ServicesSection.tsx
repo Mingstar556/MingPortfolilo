@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Check, Sparkles, ArrowRight, Clock } from "lucide-react";
 import { FadeUp, StaggerContainer, StaggerItem } from "@/components/common/ScrollReveal";
+import InteractiveNetworkBackground from "@/components/canvas/InteractiveNetworkBackground";
 
 interface EngagementModel {
   id: string;
@@ -86,6 +87,11 @@ export default function ServicesSection() {
   return (
     <section id="services" className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-slate-50 relative overflow-hidden">
       <div className="absolute inset-0 bg-graph-grid opacity-35 pointer-events-none" />
+      <InteractiveNetworkBackground className="opacity-45" />
+
+      {/* Ambient background glows for architecture services */}
+      <div className="absolute top-1/3 -right-24 w-80 h-80 bg-amber-400/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 -left-24 w-80 h-80 bg-cyan-400/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         

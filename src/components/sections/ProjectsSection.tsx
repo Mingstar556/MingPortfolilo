@@ -4,6 +4,7 @@ import Image from "next/image";
 import { ExternalLink, ArrowUpRight, CheckCircle2 } from "lucide-react";
 import { GithubIcon } from "@/components/common/BrandIcons";
 import { FadeUp, ScrollScale } from "@/components/common/ScrollReveal";
+import InteractiveNetworkBackground from "@/components/canvas/InteractiveNetworkBackground";
 
 interface RealProject {
   id: string;
@@ -84,6 +85,13 @@ const realProjects: RealProject[] = [
 export default function ProjectsSection() {
   return (
     <section id="projects" className="py-20 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white relative overflow-hidden">
+      <div className="absolute inset-0 bg-graph-grid opacity-30 pointer-events-none" />
+      <InteractiveNetworkBackground className="opacity-35" />
+
+      {/* Ambient background glows */}
+      <div className="absolute top-1/4 -right-32 w-96 h-96 bg-amber-400/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-1/3 -left-32 w-96 h-96 bg-cyan-400/10 rounded-full blur-3xl pointer-events-none" />
+
       <div className="max-w-7xl mx-auto relative z-10">
         
         {/* Clean, Spacious Section Header */}
@@ -126,54 +134,71 @@ export default function ProjectsSection() {
                       isEven ? "order-1 lg:order-2" : "order-1 lg:order-1"
                     }`}
                   >
-                    <a
-                      href={proj.liveUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="group/browser block relative rounded-xl sm:rounded-2xl overflow-hidden bg-slate-900 border border-slate-700/80 shadow-2xl hover:shadow-[0_20px_50px_rgba(10,37,64,0.22)] transition-all duration-300 transform group-hover/browser:scale-[1.015]"
-                      aria-label={`Open live website: ${proj.title}`}
-                    >
-                      {/* macOS Browser Window Top Bar */}
-                      <div className="bg-[#0B1E32] border-b border-white/10 px-3 sm:px-4 py-2 sm:py-2.5 flex items-center justify-between gap-2 sm:gap-3 select-none">
-                        {/* Traffic light window controls */}
-                        <div className="flex items-center gap-1.5 shrink-0">
-                          <span className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#FF5F56] inline-block shadow-xs" />
-                          <span className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#FFBD2E] inline-block shadow-xs" />
-                          <span className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#27C93F] inline-block shadow-xs" />
+                    <div className="relative">
+                      {/* Dynamic Project Ambient Glow Aura */}
+                      <div
+                        className={`absolute -inset-2 rounded-2xl sm:rounded-3xl blur-2xl opacity-35 group-hover:opacity-70 transition-opacity duration-500 pointer-events-none -z-10 ${
+                          proj.id === "star-coffee"
+                            ? "bg-amber-500/30"
+                            : proj.id === "star-bakery"
+                            ? "bg-yellow-500/30"
+                            : "bg-cyan-500/30"
+                        }`}
+                      />
+
+                      <a
+                        href={proj.liveUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="group/browser block relative rounded-xl sm:rounded-2xl overflow-hidden bg-slate-900 border border-slate-700/80 shadow-2xl hover:shadow-[0_20px_50px_rgba(10,37,64,0.22)] transition-all duration-300 transform group-hover/browser:scale-[1.015]"
+                        aria-label={`Open live website: ${proj.title}`}
+                      >
+                        {/* macOS Browser Window Top Bar */}
+                        <div className="bg-[#0B1E32] border-b border-white/10 px-3 sm:px-4 py-2 sm:py-2.5 flex items-center justify-between gap-2 sm:gap-3 select-none">
+                          {/* Traffic light window controls */}
+                          <div className="flex items-center gap-1.5 shrink-0">
+                            <span className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#FF5F56] inline-block shadow-xs" />
+                            <span className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#FFBD2E] inline-block shadow-xs" />
+                            <span className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#27C93F] inline-block shadow-xs" />
+                          </div>
+
+                          {/* SSL URL Address Bar */}
+                          <div className="flex-1 max-w-[170px] xs:max-w-[210px] sm:max-w-sm mx-auto bg-slate-950/80 rounded-full px-2.5 sm:px-3 py-0.5 sm:py-1 flex items-center justify-center gap-1.5 text-[10px] sm:text-[11px] font-mono text-slate-300 border border-white/5">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0" />
+                            <span className="text-slate-500 hidden xs:inline">https://</span>
+                            <span className="truncate text-slate-200 font-medium">{proj.displayUrl}</span>
+                          </div>
+
+                          {/* Live indicator & external link */}
+                          <div className="flex items-center gap-1.5 text-[9px] sm:text-[10px] font-mono font-bold text-amber-400 uppercase tracking-widest shrink-0">
+                            <span className="relative flex h-1.5 w-1.5">
+                              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-400" />
+                            </span>
+                            <span className="hidden sm:inline">LIVE</span>
+                            <ArrowUpRight className="w-3.5 h-3.5 group-hover/browser:translate-x-0.5 group-hover/browser:-translate-y-0.5 transition-transform" />
+                          </div>
                         </div>
 
-                        {/* SSL URL Address Bar */}
-                        <div className="flex-1 max-w-[170px] xs:max-w-[210px] sm:max-w-sm mx-auto bg-slate-950/80 rounded-full px-2.5 sm:px-3 py-0.5 sm:py-1 flex items-center justify-center gap-1.5 text-[10px] sm:text-[11px] font-mono text-slate-300 border border-white/5">
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0" />
-                          <span className="text-slate-500 hidden xs:inline">https://</span>
-                          <span className="truncate text-slate-200 font-medium">{proj.displayUrl}</span>
+                        {/* Homepage Screenshot Viewport */}
+                        <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-950">
+                          <Image
+                            src={proj.imageSrc}
+                            alt={`${proj.title} homepage preview`}
+                            fill
+                            sizes="(max-width: 1024px) 100vw, 50vw"
+                            className="object-cover object-top transition-transform duration-500 ease-out group-hover/browser:scale-105"
+                          />
+                          {/* Interactive Hover Pill Overlay */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent opacity-0 group-hover/browser:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
+                            <span className="px-4 py-2 rounded-full bg-amber-400 text-[#0A2540] font-mono text-xs font-bold shadow-xl flex items-center gap-2 transform translate-y-2 group-hover/browser:translate-y-0 transition-transform">
+                              <span>Open Live Website</span>
+                              <ExternalLink className="w-3.5 h-3.5" />
+                            </span>
+                          </div>
                         </div>
-
-                        {/* Live indicator & external link */}
-                        <div className="flex items-center gap-1 text-[9px] sm:text-[10px] font-mono font-bold text-amber-400 uppercase tracking-widest shrink-0">
-                          <span className="hidden sm:inline">LIVE</span>
-                          <ArrowUpRight className="w-3.5 h-3.5 group-hover/browser:translate-x-0.5 group-hover/browser:-translate-y-0.5 transition-transform" />
-                        </div>
-                      </div>
-
-                      {/* Homepage Screenshot Viewport */}
-                      <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-950">
-                        <Image
-                          src={proj.imageSrc}
-                          alt={`${proj.title} homepage preview`}
-                          fill
-                          sizes="(max-width: 1024px) 100vw, 50vw"
-                          className="object-cover object-top transition-transform duration-500 ease-out group-hover/browser:scale-105"
-                        />
-                        {/* Interactive Hover Pill Overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent opacity-0 group-hover/browser:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
-                          <span className="px-4 py-2 rounded-full bg-amber-400 text-[#0A2540] font-mono text-xs font-bold shadow-xl flex items-center gap-2 transform translate-y-2 group-hover/browser:translate-y-0 transition-transform">
-                            <span>Open Live Website</span>
-                            <ExternalLink className="w-3.5 h-3.5" />
-                          </span>
-                        </div>
-                      </div>
-                    </a>
+                      </a>
+                    </div>
                   </div>
 
                   {/* Left or Right: Project Details & Action Buttons */}

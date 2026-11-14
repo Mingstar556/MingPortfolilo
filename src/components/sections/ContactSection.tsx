@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Mail, Copy, Check, Send, ArrowUpRight, Terminal, Phone } from "lucide-react";
 import { GithubIcon, TelegramIcon, TiktokIcon } from "@/components/common/BrandIcons";
 import { FadeUp, FadeLeft, FadeRight, StaggerContainer, StaggerItem } from "@/components/common/ScrollReveal";
+import InteractiveNetworkBackground from "@/components/canvas/InteractiveNetworkBackground";
 import confetti from "canvas-confetti";
 
 export default function ContactSection() {
@@ -45,6 +46,11 @@ export default function ContactSection() {
   return (
     <section id="contact" className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-white relative overflow-hidden">
       <div className="absolute inset-0 bg-graph-grid opacity-35 pointer-events-none" />
+      <InteractiveNetworkBackground className="opacity-45" />
+
+      {/* Ambient background glows for network connection nodes */}
+      <div className="absolute top-1/4 -left-32 w-96 h-96 bg-amber-400/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-cyan-400/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         
@@ -73,6 +79,12 @@ export default function ContactSection() {
           <FadeLeft className="lg:col-span-5 flex flex-col justify-between space-y-6 sm:space-y-8">
             <div className="bg-[#0A2540] text-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10 relative overflow-hidden shadow-2xl border border-slate-800">
               <div className="absolute top-0 right-0 w-32 h-32 bg-amber-400/10 rounded-full blur-2xl pointer-events-none" />
+
+              {/* Radio Transmission Wave Effect - Meaningful communication visual */}
+              <div className="absolute -top-10 -right-10 w-44 h-44 pointer-events-none overflow-hidden" aria-hidden="true">
+                <div className="absolute inset-2 rounded-full border border-amber-400/30 animate-ping opacity-30" style={{ animationDuration: "3s" }} />
+                <div className="absolute inset-8 rounded-full border border-cyan-400/25 animate-ping opacity-25" style={{ animationDuration: "4.5s", animationDelay: "1s" }} />
+              </div>
 
               <div className="text-xs font-mono uppercase tracking-widest text-amber-400 font-bold mb-3 flex items-center gap-2">
                 <Terminal className="w-4 h-4" />

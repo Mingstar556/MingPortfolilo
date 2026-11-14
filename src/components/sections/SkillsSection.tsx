@@ -9,6 +9,7 @@ import {
   Layers
 } from "lucide-react";
 import { FadeUp, StaggerContainer, StaggerItem } from "@/components/common/ScrollReveal";
+import InteractiveNetworkBackground from "@/components/canvas/InteractiveNetworkBackground";
 
 interface DeliverablePillar {
   id: string;
@@ -144,6 +145,14 @@ export default function SkillsSection() {
 
   return (
     <section id="skills" className="py-20 sm:py-24 px-4 sm:px-6 lg:px-8 bg-slate-50 relative overflow-hidden">
+      {/* Background Architectural Grid Lines with Live Telemetry Packets */}
+      <div className="absolute inset-0 bg-graph-grid opacity-30 pointer-events-none" />
+      <InteractiveNetworkBackground />
+
+      {/* Meaningful Ambient Radial Nodes */}
+      <div className="absolute top-1/4 -left-20 w-80 h-80 bg-cyan-400/10 rounded-full blur-3xl pointer-events-none animate-pulse" />
+      <div className="absolute bottom-1/4 -right-20 w-80 h-80 bg-amber-400/10 rounded-full blur-3xl pointer-events-none animate-pulse" style={{ animationDelay: "2s" }} />
+
       <div className="max-w-7xl mx-auto relative z-10">
         
         {/* Header */}
