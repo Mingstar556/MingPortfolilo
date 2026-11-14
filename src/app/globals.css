@@ -27,10 +27,19 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Prevent 300ms mobile tap delay and unwanted blue tap highlights */
-  a, button, input, select, textarea {
+  /* Prevent 300ms mobile tap delay, unwanted blue tap highlights, and text selection on controls */
+  a, button, [role="button"] {
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  /* Ensure inputs have 16px minimum font size on mobile to stop iOS auto-zoom */
+  input, textarea, select {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    font-size: 16px;
   }
 }
 

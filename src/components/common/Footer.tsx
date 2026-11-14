@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ArrowUp, Heart, Terminal } from "lucide-react";
+import { ArrowUp } from "lucide-react";
 
 export default function Footer() {
   const [time, setTime] = useState<string>("");
@@ -43,7 +43,7 @@ export default function Footer() {
               MING STAR
             </div>
             <div className="text-[10px] font-mono text-slate-400">
-              Full-Stack Web Dev &bull; Content Creator
+              Freelance Web Developer &bull; Full-Stack Engineer
             </div>
           </div>
         </div>

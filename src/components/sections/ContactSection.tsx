@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Mail, Copy, Check, Send, Sparkles, MessageSquare, ArrowUpRight, ShieldCheck, Terminal, Zap, Phone } from "lucide-react";
+import { Mail, Copy, Check, Send, ArrowUpRight, Terminal, Phone } from "lucide-react";
 import { GithubIcon, TelegramIcon, TiktokIcon } from "@/components/common/BrandIcons";
 import { FadeUp, FadeLeft, FadeRight, StaggerContainer, StaggerItem } from "@/components/common/ScrollReveal";
 import confetti from "canvas-confetti";
@@ -9,11 +9,11 @@ import confetti from "canvas-confetti";
 export default function ContactSection() {
   const [copied, setCopied] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
-  const [selectedType, setSelectedType] = useState("Full-Stack Web MVP");
+  const [selectedType, setSelectedType] = useState("Full-Stack Web App");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    budget: "$100 - $250",
+    budget: "$1,000 - $3,000",
     message: "",
   });
 
@@ -62,7 +62,7 @@ export default function ContactSection() {
               </h2>
             </div>
             <p className="max-w-md text-slate-600 text-sm sm:text-base leading-relaxed font-sans">
-              Have a project in mind, want to sponsor a technical video, or need 1-on-1 architecture advisory? I respond within 24 hours.
+              Have a project in mind, need a full-stack MVP built, or want to elevate your web performance? I respond within 24 hours.
             </p>
           </div>
         </FadeUp>
@@ -234,10 +234,10 @@ export default function ContactSection() {
               <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
                 <div>
                   <label className="block text-xs font-mono font-bold uppercase tracking-wider text-slate-700 mb-2.5">
-                    Select Scope / Package
+                    Select Scope / Service
                   </label>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
-                    {["Full-Stack Web MVP", "Creator Sponsorship", "1-on-1 Advisory"].map((type) => (
+                    {["Full-Stack Web App", "Interactive Website", "Engineering Sprint"].map((type) => (
                       <button
                         type="button"
                         key={type}
@@ -286,28 +286,29 @@ export default function ContactSection() {
 
                 <div>
                   <label className="block text-xs font-mono font-bold uppercase tracking-wider text-slate-700 mb-1.5 sm:mb-2">
-                    Estimated Budget Allocation ($40 - $500)
+                    Estimated Project Budget
                   </label>
                   <select
                     value={formData.budget}
                     onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
                     className="w-full px-4 py-3 sm:py-3.5 rounded-2xl bg-white border border-slate-200 text-base sm:text-sm text-[#0A2540] focus:outline-none focus:ring-2 focus:ring-amber-400/80 focus:border-amber-400 cursor-pointer shadow-xs font-mono"
                   >
-                    <option value="$40 - $100">$40 - $100 (Single Feature / Consultation / Bug Fix)</option>
-                    <option value="$100 - $250">$100 - $250 (Landing Page / UI Component / Motion)</option>
-                    <option value="$250 - $500">$250 - $500 (Complete Web App / Full Website)</option>
-                    <option value="$40 - $500">$40 - $500 (Flexible / Custom Scope)</option>
+                    <option value="Under $1,000">Under $1,000 (Focused Feature / Audit / Landing Page)</option>
+                    <option value="$1,000 - $3,000">$1,000 - $3,000 (Interactive Website / Redesign)</option>
+                    <option value="$3,000 - $6,000">$3,000 - $6,000 (Full-Stack Web App / MVP Build)</option>
+                    <option value="$6,000+">$6,000+ (Custom Enterprise Platform / Retainer)</option>
+                    <option value="Flexible">Flexible / Discuss Project Scope</option>
                   </select>
                 </div>
 
                 <div>
                   <label className="block text-xs font-mono font-bold uppercase tracking-wider text-slate-700 mb-1.5 sm:mb-2">
-                    Project Brief & Objective
+                    Project Brief &amp; Objectives
                   </label>
                   <textarea
                     rows={4}
                     required
-                    placeholder="Tell me about what you are engineering, timeline goals, or sponsorship scope..."
+                    placeholder="Tell me about your product, project requirements, timeline goals, or technical challenges..."
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     className="w-full px-4 py-3 sm:py-3.5 rounded-2xl bg-white border border-slate-200 text-base sm:text-sm text-[#0A2540] placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-400/80 focus:border-amber-400 resize-none shadow-xs font-sans"

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Space_Grotesk, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
+import { Space_Grotesk, Plus_Jakarta_Sans, JetBrains_Mono, Inter_Tight } from "next/font/google";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -20,6 +20,12 @@ const jetbrainsMono = JetBrains_Mono({
   weight: ["400", "500", "700"],
 });
 
+const interTight = Inter_Tight({
+  variable: "--font-inter-tight",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
 export const viewport: Viewport = {
   themeColor: "#0A2540",
   width: "device-width",
@@ -30,23 +36,25 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://mingstar.site"),
-  title: "Ming Star | Full-Stack Web Developer & Content Creator",
+  title: "Ming Star | Freelance Web Developer & Full-Stack Engineer",
   description:
-    "Official portfolio of Ming Star. Crafting high-performance web applications, interactive 3D experiences, and tech media content.",
+    "Official portfolio of Ming Star. Independent freelance web developer engineering high-performance web applications, interactive 3D web experiences, and scalable digital platforms.",
   keywords: [
     "Ming Star",
-    "Full-Stack Developer",
-    "Content Creator",
-    "Next.js",
-    "Three.js",
-    "GSAP",
+    "Freelance Web Developer",
+    "Full-Stack Web Developer",
+    "Next.js Developer",
+    "React Developer",
+    "Three.js 3D Web",
     "TypeScript",
     "Tailwind CSS",
+    "Web Application Development",
+    "Commercial Web Development",
   ],
   authors: [{ name: "Ming Star" }],
   openGraph: {
-    title: "Ming Star | Full-Stack Web Developer & Content Creator",
-    description: "Crafting high-performance web applications & tech content.",
+    title: "Ming Star | Freelance Web Developer & Full-Stack Engineer",
+    description: "Independent freelance web developer engineering high-performance web applications & interactive digital platforms.",
     images: ["/assets/ming-cutout.webp"],
   },
   icons: {
@@ -66,17 +74,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${spaceGrotesk.variable} ${plusJakarta.variable} ${jetbrainsMono.variable} scroll-smooth antialiased`}
+      className={`${spaceGrotesk.variable} ${plusJakarta.variable} ${jetbrainsMono.variable} ${interTight.variable} scroll-smooth antialiased`}
     >
       <head>
         <link rel="icon" href="/icon.svg" type="image/svg+xml" />
         <link rel="alternate icon" href="/favicon.ico" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300..900;1,300..900&display=swap"
-          rel="stylesheet"
-        />
       </head>
       <body className="min-h-screen bg-[#FBFCFD] text-[#0A2540] font-sans selection:bg-[#F59E0B] selection:text-[#0A2540]">
         {children}

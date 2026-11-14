@@ -1,83 +1,80 @@
 "use client";
 
 import { useState } from "react";
-import { Check, Sparkles, ArrowRight, Zap, Code, Video, MessageSquare, Clock, ShieldCheck } from "lucide-react";
-import { FadeUp, PopUp, StaggerContainer, StaggerItem } from "@/components/common/ScrollReveal";
+import { Check, Sparkles, ArrowRight, Clock } from "lucide-react";
+import { FadeUp, StaggerContainer, StaggerItem } from "@/components/common/ScrollReveal";
 
-interface ServicePackage {
+interface EngagementModel {
   id: string;
   name: string;
   badge: string;
-  price: string;
   timeline: string;
   tagline: string;
-  features: string[];
+  scope: string[];
   ctaText: string;
   popular?: boolean;
 }
 
-const packages: ServicePackage[] = [
+const engagementModels: EngagementModel[] = [
   {
-    id: "dev-mvp",
-    name: "Full-Stack Web MVP",
-    badge: "Engineering Package",
-    price: "$250 - $500",
-    timeline: "2 - 4 Weeks",
-    tagline: "Turn your product vision into a lightning-fast, production-ready web application built to scale.",
-    features: [
-      "Next.js 16 App Router & TypeScript architecture",
-      "Tailwind CSS v4 & custom GSAP/Three.js motion",
-      "PostgreSQL database & secure authentication",
-      "Stripe payment integration & transactional emails",
-      "Bonus: 60-second product launch video reel",
-      "Full IP ownership & automated CI/CD deployment",
+    id: "mvp-build",
+    name: "Full-Cycle Product MVP",
+    badge: "Comprehensive Build",
+    timeline: "3 - 5 Weeks",
+    tagline: "End-to-end engineering from wireframe to production launch, complete with database, authentication, payments, and automated deployment.",
+    scope: [
+      "Next.js 16 App Router & strict TypeScript architecture",
+      "PostgreSQL database schema, Prisma migrations & pooling",
+      "Secure user authentication & role-based session logic",
+      "Stripe payment gateway & transactional email notifications",
+      "Responsive mobile-first interface styled with Tailwind CSS v4",
+      "Automated CI/CD deployment & full code IP handover",
     ],
-    ctaText: "Commission an MVP",
+    ctaText: "Discuss Project Scope",
     popular: true,
   },
   {
-    id: "creator-sponsor",
-    name: "Brand Sponsorship & Media",
-    badge: "Creator Package",
-    price: "$100 - $250",
-    timeline: "1 - 2 Weeks",
-    tagline: "Put your developer tool or SaaS directly in front of thousands of active engineers and builders.",
-    features: [
-      "Dedicated YouTube Shorts & TikTok video feature",
-      "Hands-on live coding & API integration tutorial",
-      "Permanent GitHub showcase repository link",
-      "Engaged audience of developers & tech founders",
-      "Authentic, developer-first narrative that converts",
-      "Performance analytics & engagement recap report",
+    id: "brand-experience",
+    name: "Interactive Website & Redesign",
+    badge: "Bespoke Frontend",
+    timeline: "2 - 3 Weeks",
+    tagline: "Distinctive marketing flagships and digital experiences engineered with smooth 60 FPS motion, 3D web elements, and high conversion.",
+    scope: [
+      "Custom responsive design engineered from Figma or scratch",
+      "Hardware-accelerated Three.js WebGL & GLSL visual effects",
+      "Smooth GSAP 3 ScrollTrigger timeline choreography",
+      "Headless CMS integration for instant team updates",
+      "Sub-second load speed & 100/100 Lighthouse performance",
+      "Cross-platform QA on physical mobile and desktop hardware",
     ],
-    ctaText: "Book Brand Collab",
+    ctaText: "Request Website Scope",
   },
   {
-    id: "advisory",
-    name: "Technical Advisory & Audit",
-    badge: "Consultation",
-    price: "$40 - $100",
-    timeline: "24h Turnaround",
-    tagline: "1-on-1 strategic session to diagnose architecture bottlenecks or optimize motion performance.",
-    features: [
-      "60-minute high-impact video consultation",
-      "Full-stack code & performance review (LCP, CLS)",
-      "Motion design & Three.js optimization plan",
-      "Content strategy for developer evangelism",
-      "Written action checklist delivered within 24h",
-      "Direct async follow-up via Discord / Slack",
+    id: "engineering-sprint",
+    name: "Dedicated Engineering Sprint",
+    badge: "Targeted Sprint",
+    timeline: "1 - 2 Weeks",
+    tagline: "Focused technical sprints to eliminate performance bottlenecks, harden mobile responsiveness, or deliver critical product features.",
+    scope: [
+      "Comprehensive Core Web Vitals audit & code refactoring",
+      "Zero layout shift (CLS) & sub-second LCP optimization",
+      "Mobile touch interaction, viewport & drawer polish",
+      "Custom API integrations & resilient webhook handlers",
+      "Direct async founder communication via Slack or Discord",
+      "Verifiable before/after speed benchmark report",
     ],
-    ctaText: "Schedule Advisory",
+    ctaText: "Book an Engineering Sprint",
   },
 ];
 
 export default function ServicesSection() {
   const [selectedAddons, setSelectedAddons] = useState<string[]>([]);
 
-  const addons = [
-    { id: "3d-shaders", label: "Custom 3D WebGL Shader" },
-    { id: "video-reel", label: "4K Video Launch Reel" },
-    { id: "rush-delivery", label: "2-Week Priority Rush" },
+  const technicalAddons = [
+    { id: "3d-webgl", label: "Custom 3D WebGL Shader" },
+    { id: "stripe-portal", label: "Stripe Billing & Checkout" },
+    { id: "headless-cms", label: "Headless CMS Integration" },
+    { id: "rush-timeline", label: "2-Week Priority Rush" },
   ];
 
   const toggleAddon = (id: string) => {
@@ -98,31 +95,31 @@ export default function ServicesSection() {
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-mono font-bold uppercase tracking-wider mb-3 sm:mb-4">
                 <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
-                05 // COLLABORATION & ENGAGEMENT
+                04 // FREELANCE ENGAGEMENT MODELS
               </div>
               <h2 className="font-display font-black text-3xl xs:text-4xl sm:text-5xl lg:text-6xl text-[#0A2540] tracking-tight leading-[1.08]">
-                Work With Ming Star.<br />
-                <span className="text-amber-500">Transparent Deliverables.</span>
+                How We Can Work Together.<br />
+                <span className="text-amber-500">Transparent Scopes &amp; Delivery.</span>
               </h2>
             </div>
             <p className="max-w-md text-slate-600 text-sm sm:text-base leading-relaxed font-sans">
-              Ready to build an ambitious web experience or sponsor a high-converting technical video? Select an option below.
+              Choose the engagement model that best fits your product roadmap. Every project includes direct communication, milestone reviews, and production deployment.
             </p>
           </div>
         </FadeUp>
 
-        {/* Pricing & Services Cards */}
+        {/* Engagement Models Cards */}
         <StaggerContainer className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 mb-12 sm:mb-16" staggerDelay={0.12}>
-          {packages.map((pkg) => (
+          {engagementModels.map((model) => (
             <StaggerItem
-              key={pkg.id}
+              key={model.id}
               className={`rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10 flex flex-col justify-between transition-all duration-300 relative ${
-                pkg.popular
+                model.popular
                   ? "bg-[#0A2540] text-white shadow-2xl border-2 border-amber-400 sm:scale-[1.02] hover:-translate-y-1.5"
                   : "bg-white text-[#0A2540] border border-slate-200/90 shadow-lg shadow-slate-900/5 hover:shadow-xl hover:border-slate-300 hover:-translate-y-1"
               }`}
             >
-              {pkg.popular && (
+              {model.popular && (
                 <div className="absolute -top-3.5 left-6 sm:left-8 px-3.5 sm:px-4 py-1 rounded-full bg-amber-400 text-[#0A2540] text-[11px] sm:text-xs font-mono font-bold tracking-wider shadow-md uppercase">
                   Most Requested
                 </div>
@@ -132,61 +129,51 @@ export default function ServicesSection() {
                 <div className="flex items-center justify-between mb-4">
                   <span
                     className={`text-[11px] font-mono uppercase tracking-widest font-semibold ${
-                      pkg.popular ? "text-amber-400" : "text-slate-500"
+                      model.popular ? "text-amber-400" : "text-slate-500"
                     }`}
                   >
-                    {pkg.badge}
+                    {model.badge}
                   </span>
                   <span
                     className={`text-xs font-mono font-semibold flex items-center gap-1.5 px-3 py-1 rounded-full ${
-                      pkg.popular ? "bg-white/10 text-emerald-400" : "bg-slate-100 text-slate-700"
+                      model.popular ? "bg-white/10 text-emerald-400" : "bg-slate-100 text-slate-700"
                     }`}
                   >
                     <Clock className="w-3.5 h-3.5" />
-                    {pkg.timeline}
+                    {model.timeline}
                   </span>
                 </div>
 
                 <h3
-                  className={`font-display font-black text-xl sm:text-2xl lg:text-3xl mt-1 mb-2 ${
-                    pkg.popular ? "text-white" : "text-[#0A2540]"
+                  className={`font-display font-black text-xl sm:text-2xl lg:text-3xl mt-1 mb-3 ${
+                    model.popular ? "text-white" : "text-[#0A2540]"
                   }`}
                 >
-                  {pkg.name}
+                  {model.name}
                 </h3>
-
-                <div className="flex items-baseline gap-2 mb-3">
-                  <span
-                    className={`font-display font-black text-2xl sm:text-3xl ${
-                      pkg.popular ? "text-amber-400" : "text-[#0A2540]"
-                    }`}
-                  >
-                    {pkg.price}
-                  </span>
-                  <span
-                    className={`text-xs font-mono uppercase tracking-wider ${
-                      pkg.popular ? "text-slate-300" : "text-slate-500"
-                    }`}
-                  >
-                    Est. Scope
-                  </span>
-                </div>
 
                 <p
                   className={`text-xs sm:text-sm leading-relaxed mb-6 sm:mb-8 ${
-                    pkg.popular ? "text-slate-300" : "text-slate-600"
+                    model.popular ? "text-slate-300" : "text-slate-600"
                   }`}
                 >
-                  {pkg.tagline}
+                  {model.tagline}
                 </p>
 
-                {/* Features List */}
+                {/* Scope Breakdown */}
                 <div className="space-y-3 sm:space-y-3.5 mb-6 sm:mb-8">
-                  {pkg.features.map((feat, i) => (
+                  <div
+                    className={`text-[10px] font-mono uppercase font-bold tracking-wider mb-2 ${
+                      model.popular ? "text-amber-400" : "text-slate-500"
+                    }`}
+                  >
+                    What&apos;s Included In Scope:
+                  </div>
+                  {model.scope.map((item, i) => (
                     <div key={i} className="flex items-start gap-2.5 sm:gap-3">
                       <div
                         className={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-0.5 ${
-                          pkg.popular
+                          model.popular
                             ? "bg-amber-400 text-[#0A2540]"
                             : "bg-emerald-50 text-emerald-600 border border-emerald-200"
                         }`}
@@ -195,10 +182,10 @@ export default function ServicesSection() {
                       </div>
                       <span
                         className={`text-xs sm:text-sm ${
-                          pkg.popular ? "text-slate-200" : "text-slate-700"
+                          model.popular ? "text-slate-200" : "text-slate-700"
                         }`}
                       >
-                        {feat}
+                        {item}
                       </span>
                     </div>
                   ))}
@@ -209,19 +196,19 @@ export default function ServicesSection() {
               <a
                 href="#contact"
                 className={`w-full py-3.5 sm:py-4 min-h-[48px] rounded-full font-bold text-xs font-mono tracking-wider uppercase flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer shadow-md active:scale-95 ${
-                  pkg.popular
+                  model.popular
                     ? "bg-amber-400 hover:bg-amber-300 text-[#0A2540] shadow-amber-400/20"
                     : "bg-[#0A2540] hover:bg-[#07192C] text-white shadow-slate-900/10"
                 }`}
               >
-                <span>{pkg.ctaText}</span>
+                <span>{model.ctaText}</span>
                 <ArrowRight className="w-4 h-4" />
               </a>
             </StaggerItem>
           ))}
         </StaggerContainer>
 
-        {/* Interactive Scope Add-on Selector */}
+        {/* Custom Technical Capabilities Selector */}
         <FadeUp delay={0.2}>
           <div className="bg-white border border-slate-200/90 rounded-2xl sm:rounded-3xl p-5 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-5 sm:gap-6 shadow-sm">
             <div className="flex items-center gap-3 sm:gap-4">
@@ -230,22 +217,22 @@ export default function ServicesSection() {
               </div>
               <div>
                 <h4 className="font-display font-bold text-sm sm:text-base text-[#0A2540]">
-                  Custom Architecture Add-ons
+                  Custom Project Capabilities
                 </h4>
                 <p className="text-xs text-slate-500 mt-0.5">
-                  Select custom options to bundle directly into your project inquiry.
+                  Select optional technical features to include in your project inquiry.
                 </p>
               </div>
             </div>
 
             <div className="flex flex-wrap gap-2 sm:gap-2.5 w-full md:w-auto">
-              {addons.map((a) => {
-                const active = selectedAddons.includes(a.id);
+              {technicalAddons.map((addon) => {
+                const active = selectedAddons.includes(addon.id);
                 return (
                   <button
-                    key={a.id}
+                    key={addon.id}
                     type="button"
-                    onClick={() => toggleAddon(a.id)}
+                    onClick={() => toggleAddon(addon.id)}
                     className={`px-3.5 sm:px-4 py-2 min-h-[42px] rounded-full text-xs font-mono font-semibold transition-all cursor-pointer active:scale-95 ${
                       active
                         ? "bg-[#0A2540] text-amber-400 shadow-sm"
@@ -253,7 +240,7 @@ export default function ServicesSection() {
                     }`}
                   >
                     {active ? "✓ " : "+ "}
-                    {a.label}
+                    {addon.label}
                   </button>
                 );
               })}

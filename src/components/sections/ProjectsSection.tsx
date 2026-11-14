@@ -1,9 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { ExternalLink, ArrowUpRight, Code2, Sparkles, CheckCircle2 } from "lucide-react";
+import { ExternalLink, ArrowUpRight, CheckCircle2 } from "lucide-react";
 import { GithubIcon } from "@/components/common/BrandIcons";
-import { FadeUp, FadeLeft, FadeRight } from "@/components/common/ScrollReveal";
+import { FadeUp } from "@/components/common/ScrollReveal";
 
 interface RealProject {
   id: string;
@@ -25,7 +25,7 @@ const realProjects: RealProject[] = [
   {
     id: "star-coffee",
     number: "01",
-    title: "STAR COFFEE — Artisanal Roasters & Brews",
+    title: "STAR COFFEE • Artisanal Roasters & Brews",
     category: "Interactive E-Commerce & Motion",
     tagline: "Buttery-smooth momentum scrolling and rich dark espresso aesthetics.",
     description: "Full artisanal roasters web showcase engineered with Tailwind CSS, GSAP 3 ScrollTrigger, and Lenis smooth momentum scrolling. Designed with tactile micro-interactions and dark espresso tones.",

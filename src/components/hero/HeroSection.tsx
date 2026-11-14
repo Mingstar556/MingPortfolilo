@@ -1,13 +1,10 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import Image from "next/image";
-import Link from "next/link";
 import { motion } from "motion/react";
-import { ArrowDown, Code2, Video, Sparkles, ExternalLink, Play, Film } from "lucide-react";
+import { ArrowDown, Code2, Sparkles } from "lucide-react";
 import HeroThreeCanvas from "@/components/canvas/HeroThreeCanvas";
 import InkRevealCharacter from "@/components/hero/InkRevealCharacter";
-import TopVideoReelSpotlight from "@/components/hero/TopVideoReelSpotlight";
 
 export default function HeroSection() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -125,7 +122,7 @@ export default function HeroSection() {
 
           {/* Main Giant Headline: MY PORTFOLIO */}
           <div className="relative mb-4 sm:mb-6">
-            <h1 className="font-display font-black text-5xl xs:text-6xl sm:text-7xl md:text-8xl lg:text-[7.2rem] leading-[0.9] sm:leading-[0.88] tracking-[-0.035em] text-[#0A2540] select-none uppercase">
+            <h1 className="font-display font-black text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-[7.2rem] leading-[0.9] sm:leading-[0.88] tracking-[-0.035em] text-[#0A2540] select-none uppercase">
               MY<br />PORTFOLIO
             </h1>
           </div>
@@ -139,10 +136,9 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* Dual Identity Subheading & Tagline */}
+          {/* Freelance Web Developer Tagline */}
           <p className="max-w-lg text-slate-600 text-sm sm:text-base lg:text-lg leading-relaxed mb-6 sm:mb-8 font-sans">
-            <strong className="text-[#0A2540] font-semibold">Full-Stack Engineer</strong> architecting responsive, high-performance web applications, and{" "}
-            <strong className="text-amber-600 font-semibold">Digital Content Creator</strong> breaking down cutting-edge tech and code.
+            <strong className="text-[#0A2540] font-semibold">Freelance Web Developer</strong> engineering high-performance web applications, custom interactive websites, and digital experiences that turn visitors into clients.
           </p>
 
           {/* Interactive Action CTAs - Full-width stacked on mobile, row on tablet/desktop */}
@@ -156,27 +152,27 @@ export default function HeroSection() {
             </a>
 
             <a
-              href="#top-reels"
+              href="#contact"
               className="inline-flex items-center justify-center gap-2.5 px-6 sm:px-7 py-3.5 min-h-[48px] rounded-full bg-white hover:bg-slate-50 border-2 border-[#0A2540] text-[#0A2540] text-xs sm:text-sm font-bold tracking-wide shadow-sm hover:shadow-md active:scale-95 transition-all duration-200 cursor-pointer group"
             >
-              <Play className="w-4 h-4 fill-amber-500 text-amber-500 group-hover:scale-110 transition-transform" />
-              <span>Watch Creator Reels</span>
+              <Sparkles className="w-4 h-4 text-amber-500 group-hover:scale-110 transition-transform" />
+              <span>Start a Project</span>
             </a>
           </div>
 
           {/* Quick Metrics Bar - Balanced 3 Columns for Mobile */}
           <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-slate-200/80 w-full grid grid-cols-3 gap-2 sm:gap-4 text-left">
             <div>
-              <div className="font-display font-black text-xl xs:text-2xl sm:text-3xl text-[#0A2540]">50K+</div>
-              <div className="text-[10px] sm:text-[11px] font-mono text-slate-500 uppercase tracking-wider mt-0.5 leading-tight">Community</div>
+              <div className="font-display font-black text-xl xs:text-2xl sm:text-3xl text-[#0A2540]">20+</div>
+              <div className="text-[10px] sm:text-[11px] font-mono text-slate-500 uppercase tracking-wider mt-0.5 leading-tight">Shipped Works</div>
             </div>
             <div>
-              <div className="font-display font-black text-xl xs:text-2xl sm:text-3xl text-[#0A2540]">20+</div>
-              <div className="text-[10px] sm:text-[11px] font-mono text-slate-500 uppercase tracking-wider mt-0.5 leading-tight">Shipped Apps</div>
+              <div className="font-display font-black text-xl xs:text-2xl sm:text-3xl text-[#0A2540]">&lt; 1s</div>
+              <div className="text-[10px] sm:text-[11px] font-mono text-slate-500 uppercase tracking-wider mt-0.5 leading-tight">Hydration Speed</div>
             </div>
             <div>
               <div className="font-display font-black text-xl xs:text-2xl sm:text-3xl text-emerald-600">100%</div>
-              <div className="text-[10px] sm:text-[11px] font-mono text-slate-500 uppercase tracking-wider mt-0.5 leading-tight">Reliability</div>
+              <div className="text-[10px] sm:text-[11px] font-mono text-slate-500 uppercase tracking-wider mt-0.5 leading-tight">On-Time Delivery</div>
             </div>
           </div>
         </motion.div>
@@ -203,13 +199,8 @@ export default function HeroSection() {
 
       </div>
 
-      {/* Special Top Feature: Live Video Reel Spotlight */}
-      <div className="max-w-7xl w-full mx-auto relative z-20 mt-14 mb-10">
-        <TopVideoReelSpotlight />
-      </div>
-
       {/* Scroll Down Anchor */}
-      <div className="pt-4 pb-2 z-20">
+      <div className="pt-8 sm:pt-12 pb-2 z-20">
         <a
           href="#about"
           className="flex flex-col items-center gap-1.5 text-slate-400 hover:text-[#0A2540] transition-colors cursor-pointer"

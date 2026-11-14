@@ -15,10 +15,12 @@ export default function Preloader({ onComplete }: { onComplete?: () => void }) {
         sessionStorage.getItem("has_seen_preloader") ||
         navigator.webdriver)
     ) {
-      setIsLoaded(true);
-      setIsRemoved(true);
-      if (onComplete) onComplete();
-      return;
+      const timer = setTimeout(() => {
+        setIsLoaded(true);
+        setIsRemoved(true);
+        if (onComplete) onComplete();
+      }, 0);
+      return () => clearTimeout(timer);
     }
 
     const interval = setInterval(() => {
@@ -71,7 +73,7 @@ export default function Preloader({ onComplete }: { onComplete?: () => void }) {
 
         {/* Brand Title */}
         <div className="text-xs uppercase tracking-[0.3em] font-semibold text-slate-400 mb-2">
-          MING STAR • ARCHITECTURE & MEDIA
+          MING STAR • FREELANCE WEB DEV
         </div>
         <div className="font-display text-2xl font-bold tracking-tight text-white mb-6">
           Initializing Digital Experience

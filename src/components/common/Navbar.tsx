@@ -3,11 +3,9 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { 
-  Sparkles, 
   Menu, 
   X, 
   ArrowUpRight, 
-  Film, 
   Code2, 
   User, 
   Cpu, 
@@ -29,16 +27,16 @@ export default function Navbar() {
   interface NavItem {
     name: string;
     href: string;
-    icon: any;
+    icon: React.ComponentType<{ className?: string }>;
     desc: string;
     badge?: string;
   }
 
   const navLinks: NavItem[] = [
-    { name: "About", href: "/#about", icon: User, desc: "Biography & Dual Vision" },
-    { name: "Skills", href: "/#skills", icon: Cpu, desc: "Tech Stack & Capabilities" },
+    { name: "About", href: "/#about", icon: User, desc: "Independent Web Developer" },
+    { name: "Deliverables", href: "/#skills", icon: Cpu, desc: "Commercial Solutions & Builds" },
     { name: "Projects", href: "/#projects", icon: Code2, desc: "Selected Live Works" },
-    { name: "Services", href: "/#services", icon: Briefcase, desc: "Pricing & Engagement" },
+    { name: "Services", href: "/#services", icon: Briefcase, desc: "Freelance Scopes & Models" },
     { name: "Contact", href: "/#contact", icon: Mail, desc: "Direct Inquiry Console" },
   ];
 
@@ -135,7 +133,7 @@ export default function Navbar() {
                   MING STAR
                 </span>
                 <span className="text-[9px] sm:text-[10px] font-mono font-medium text-slate-500 uppercase tracking-widest flex items-center gap-1">
-                  DEV &bull; CREATOR
+                  FREELANCE WEB DEV
                 </span>
               </div>
             </Link>
@@ -407,11 +405,11 @@ export default function Navbar() {
       )}
 
       {/* Floating Mobile Thumb Dock - Native App Thumb Ergonomics */}
-      <div className="md:hidden fixed bottom-3 inset-x-3 z-30 max-w-sm mx-auto pointer-events-auto">
+      <div className="md:hidden fixed bottom-[calc(0.75rem+env(safe-area-inset-bottom,0px))] inset-x-3 z-30 max-w-sm mx-auto pointer-events-auto">
         <div className="bg-[#0A2540]/92 backdrop-blur-xl border border-white/20 text-white rounded-full p-1.5 shadow-[0_12px_40px_rgba(7,25,44,0.45)] flex items-center justify-between gap-1">
           <Link
             href="/#about"
-            className={`flex flex-col items-center justify-center py-1.5 px-3 rounded-full text-[10px] font-mono transition-all active:scale-95 ${
+            className={`flex flex-col items-center justify-center py-1.5 px-2.5 rounded-full text-[10px] font-mono transition-all active:scale-95 ${
               activeSection === "about"
                 ? "bg-white/15 text-amber-400 font-bold"
                 : "text-slate-300 hover:text-white"
@@ -423,39 +421,43 @@ export default function Navbar() {
 
           <Link
             href="/#skills"
-            className={`flex flex-col items-center justify-center py-1.5 px-3 rounded-full text-[10px] font-mono transition-all active:scale-95 ${
+            className={`flex flex-col items-center justify-center py-1.5 px-2 rounded-full text-[10px] font-mono transition-all active:scale-95 ${
               activeSection === "skills"
                 ? "bg-white/15 text-amber-400 font-bold"
                 : "text-slate-300 hover:text-white"
             }`}
           >
             <Cpu className="w-4 h-4 mb-0.5" />
-            <span>Skills</span>
+            <span>Deliver</span>
           </Link>
 
           <Link
             href="/#projects"
-            className={`flex flex-col items-center justify-center py-1.5 px-3 rounded-full text-[10px] font-mono transition-all active:scale-95 ${
+            className={`flex flex-col items-center justify-center py-1.5 px-2.5 rounded-full text-[10px] font-mono transition-all active:scale-95 ${
               activeSection === "projects"
                 ? "bg-white/15 text-amber-400 font-bold"
                 : "text-slate-300 hover:text-white"
             }`}
           >
             <Code2 className="w-4 h-4 mb-0.5" />
-            <span>Projects</span>
+            <span>Works</span>
           </Link>
 
           <Link
-            href="/#top-reels"
-            className="flex flex-col items-center justify-center py-1.5 px-2.5 rounded-full text-[10px] font-mono text-slate-300 hover:text-white transition-all active:scale-95"
+            href="/#services"
+            className={`flex flex-col items-center justify-center py-1.5 px-2.5 rounded-full text-[10px] font-mono transition-all active:scale-95 ${
+              activeSection === "services"
+                ? "bg-white/15 text-amber-400 font-bold"
+                : "text-slate-300 hover:text-white"
+            }`}
           >
-            <Film className="w-4 h-4 mb-0.5 text-amber-400" />
-            <span>Reels</span>
+            <Briefcase className="w-4 h-4 mb-0.5" />
+            <span>Services</span>
           </Link>
 
           <Link
             href="/#contact"
-            className="inline-flex items-center justify-center gap-1.5 px-4 py-2 min-h-[38px] rounded-full bg-amber-400 text-[#0A2540] text-xs font-bold font-mono tracking-wider uppercase shadow-md active:scale-95 transition-transform shrink-0"
+            className="inline-flex items-center justify-center gap-1 px-3.5 py-2 min-h-[38px] rounded-full bg-amber-400 text-[#0A2540] text-xs font-bold font-mono tracking-wider uppercase shadow-md active:scale-95 transition-transform shrink-0"
           >
             <span>Talk</span>
             <ArrowUpRight className="w-3.5 h-3.5 text-[#0A2540]" />

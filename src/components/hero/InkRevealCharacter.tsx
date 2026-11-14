@@ -21,21 +21,21 @@ interface InkParticle {
   isSplatter: boolean;
 }
 
+// Artistic watercolor pigment palette
+const pigmentPalette = [
+  { r: 245, g: 158, b: 11 },  // Honey Amber
+  { r: 236, g: 72, b: 153 },  // Quinacridone Magenta
+  { r: 6, g: 182, b: 212 },   // Vibrant Cyan
+  { r: 249, g: 115, b: 22 },  // Saffron Orange
+  { r: 139, g: 92, b: 246 },  // Royal Violet
+  { r: 10, g: 37, b: 64 },    // Deep Midnight Navy
+];
+
 export default function InkRevealCharacter() {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [hasInteracted, setHasInteracted] = useState(false);
   const interactedRef = useRef(false);
-
-  // Artistic watercolor pigment palette
-  const pigmentPalette = [
-    { r: 245, g: 158, b: 11 },  // Honey Amber
-    { r: 236, g: 72, b: 153 },  // Quinacridone Magenta
-    { r: 6, g: 182, b: 212 },   // Vibrant Cyan
-    { r: 249, g: 115, b: 22 },  // Saffron Orange
-    { r: 139, g: 92, b: 246 },  // Royal Violet
-    { r: 10, g: 37, b: 64 },    // Deep Midnight Navy
-  ];
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -46,7 +46,7 @@ export default function InkRevealCharacter() {
     if (!ctx) return;
 
     let animationFrameId: number;
-    let particles: InkParticle[] = [];
+    const particles: InkParticle[] = [];
     let lastX = -1000;
     let lastY = -1000;
     let lastTime = performance.now();
@@ -329,7 +329,7 @@ export default function InkRevealCharacter() {
         {/* The Clean Cutout of Ming Star */}
         <Image
           src="/assets/ming-cutout.webp"
-          alt="Ming Star - Full-Stack Developer & Content Creator"
+          alt="Ming Star - Freelance Web Developer & Full-Stack Engineer"
           width={1229}
           height={1229}
           priority
