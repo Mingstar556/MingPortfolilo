@@ -60,15 +60,15 @@ export default function ContactSection() {
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 text-amber-900 border border-amber-200/60 text-xs font-mono font-bold uppercase tracking-wider mb-3 sm:mb-4">
                 <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
-                06 // INITIATE TRANSMISSION
+                05 // READY TO START?
               </div>
               <h2 className="font-display font-black text-3xl xs:text-4xl sm:text-5xl lg:text-6xl text-[#0A2540] tracking-tight leading-[1.08]">
-                Let&apos;s Build Something Iconic.<br />
-                <span className="text-amber-500">Fast Turnaround. High Impact.</span>
+                Ready To Launch Your Website?<br />
+                <span className="text-amber-500">Get A Free Quote In 24 Hours.</span>
               </h2>
             </div>
             <p className="max-w-md text-slate-600 text-sm sm:text-base leading-relaxed font-sans">
-              Have a project in mind, need a full-stack MVP built, or want to elevate your web performance? I respond within 24 hours.
+              Have an idea, need an MVP built, or want to revamp your website for higher conversions? Send a quick message below and I&apos;ll get back to you with timelines and a detailed breakdown.
             </p>
           </div>
         </FadeUp>
@@ -329,10 +329,10 @@ export default function ContactSection() {
 
                 <button
                   type="submit"
-                  className="w-full py-4 min-h-[50px] rounded-full bg-[#0A2540] hover:bg-[#07192C] text-white font-bold font-mono text-xs tracking-wider uppercase flex items-center justify-center gap-2 shadow-lg shadow-slate-950/15 hover:shadow-xl active:scale-98 transition-all cursor-pointer group"
+                  className="w-full py-4 min-h-[50px] rounded-full bg-amber-400 hover:bg-amber-300 text-[#0A2540] font-bold font-mono text-xs tracking-wider uppercase flex items-center justify-center gap-2 shadow-lg shadow-amber-400/20 hover:shadow-xl hover:shadow-amber-400/30 active:scale-98 transition-all cursor-pointer group"
                 >
-                  <Send className="w-4 h-4 text-amber-400 group-hover:translate-x-1 transition-transform" />
-                  <span>Transmit Project Inquiry</span>
+                  <Send className="w-4 h-4 text-[#0A2540] group-hover:translate-x-1 transition-transform" />
+                  <span>Send Project Inquiry &bull; Get Quote</span>
                 </button>
               </form>
             )}

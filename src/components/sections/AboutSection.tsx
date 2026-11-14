@@ -24,11 +24,11 @@ export default function AboutSection() {
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900/5 border border-slate-900/10 text-[#0A2540] text-xs font-mono font-bold tracking-wider uppercase mb-3 sm:mb-4">
                 <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
-                01 // INDEPENDENT WEB DEVELOPER
+                01 // WHY CHOOSE AN INDEPENDENT DEV
               </div>
               <h2 className="font-display font-black text-3xl xs:text-4xl sm:text-5xl lg:text-6xl text-[#0A2540] tracking-tight leading-[1.08]">
-                Engineering Web Platforms.<br />
-                <span className="text-amber-500">Driving Business Growth.</span>
+                Senior-Level Quality.<br />
+                <span className="text-amber-500">Zero Agency Overhead.</span>
               </h2>
             </div>
 
@@ -137,7 +137,7 @@ export default function AboutSection() {
             <div className="mb-6">
               <div className="flex items-center justify-between mb-3">
                 <span className="text-[11px] font-mono uppercase tracking-widest text-amber-600 font-bold">
-                  STUDIO ARCHIVE PROFILE
+                  DIRECT PARTNER PROFILE
                 </span>
                 <span className="text-xs font-mono text-slate-400">
                   REF // MS-2026
@@ -147,7 +147,7 @@ export default function AboutSection() {
                 Ming Star
               </h3>
               <p className="text-slate-600 text-xs sm:text-sm mt-2 leading-relaxed">
-                Operating at the confluence of engineering rigor and digital aesthetics. Available globally for bespoke client platforms, full-stack MVP builds, and web performance overhauls.
+                I help startups and established brands build high-converting, custom websites and applications on fast timelines. No account managers, no junior staff passing off tickets — just direct, transparent communication and dependable delivery.
               </p>
             </div>
 

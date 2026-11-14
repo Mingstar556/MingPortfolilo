@@ -137,64 +137,68 @@ export default function HeroSection() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
             </span>
-            <span>@MINGSTAR.SITE</span>
+            <span>FREELANCE WEB DEVELOPER</span>
             <span className="text-slate-300">•</span>
-            <span className="text-emerald-700 font-semibold">AVAILABLE Q1/Q2</span>
+            <span className="text-emerald-700 font-semibold">ACCEPTING CLIENTS</span>
           </div>
 
-          {/* Main Giant Headline: MY PORTFOLIO */}
-          <div className="relative mb-4 sm:mb-6">
-            <h1 className="font-display font-black text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-[7.2rem] leading-[0.9] sm:leading-[0.88] tracking-[-0.035em] text-[#0A2540] select-none uppercase">
-              MY<br />PORTFOLIO
+          {/* Main Giant Headline: Commercial & Client-Focused */}
+          <div className="relative mb-3 sm:mb-5">
+            <h1 className="font-display font-black text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-[6.8rem] leading-[0.92] sm:leading-[0.9] tracking-[-0.035em] text-[#0A2540] select-none uppercase">
+              HIGH-IMPACT<br />
+              <span className="text-amber-500">WEBSITES</span>
             </h1>
           </div>
 
           {/* Sub-badge: MING STAR in solid Navy Bar */}
-          <div className="w-full max-w-xs sm:max-w-sm mb-6 sm:mb-8">
-            <div className="bg-[#0A2540] py-3 sm:py-3.5 px-6 sm:px-8 rounded-lg shadow-md flex items-center justify-center transform hover:scale-[1.02] transition-transform duration-200">
-              <span className="font-mono text-xs sm:text-sm md:text-base font-bold tracking-[0.25em] sm:tracking-[0.35em] text-white uppercase">
+          <div className="w-full max-w-xs sm:max-w-sm mb-4 sm:mb-6">
+            <div className="bg-[#0A2540] py-2.5 sm:py-3 px-5 sm:px-7 rounded-lg shadow-md flex items-center justify-between transform hover:scale-[1.01] transition-transform duration-200">
+              <span className="font-mono text-xs sm:text-sm font-bold tracking-[0.2em] sm:tracking-[0.25em] text-white uppercase">
                 MING STAR
+              </span>
+              <span className="text-[10px] sm:text-xs font-mono text-amber-400 font-semibold">
+                BUILD &bull; LAUNCH &bull; GROW
               </span>
             </div>
           </div>
 
-          {/* Freelance Web Developer Tagline */}
+          {/* Direct Value-Proposition Copy: Focused on Client ROI & Results */}
           <p className="max-w-lg text-slate-600 text-sm sm:text-base lg:text-lg leading-relaxed mb-6 sm:mb-8 font-sans">
-            <strong className="text-[#0A2540] font-semibold">Freelance Web Developer</strong> engineering high-performance web applications, custom interactive websites, and digital experiences that turn visitors into clients.
+            I help businesses, startup founders, and brands turn visitors into paying customers with ultra-fast web applications, custom marketing websites, and smooth 60 FPS digital experiences.
           </p>
 
-          {/* Interactive Action CTAs - Full-width stacked on mobile, row on tablet/desktop */}
+          {/* High-Converting Action CTAs */}
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto">
             <a
-              href="#projects"
-              className="inline-flex items-center justify-center gap-2.5 px-6 sm:px-7 py-3.5 min-h-[48px] rounded-full bg-[#0A2540] hover:bg-[#07192C] text-white text-xs sm:text-sm font-semibold tracking-wide shadow-lg shadow-slate-950/15 hover:shadow-xl hover:shadow-slate-950/25 active:scale-95 transition-all duration-200 cursor-pointer"
+              href="#contact"
+              className="inline-flex items-center justify-center gap-2.5 px-6 sm:px-8 py-3.5 min-h-[48px] rounded-full bg-amber-400 hover:bg-amber-300 text-[#0A2540] text-xs sm:text-sm font-bold tracking-wide shadow-lg shadow-amber-400/25 hover:shadow-xl hover:shadow-amber-400/35 active:scale-95 transition-all duration-200 cursor-pointer"
             >
-              <Code2 className="w-4 h-4 text-amber-400" />
-              <span>Explore Projects</span>
+              <Sparkles className="w-4 h-4 text-[#0A2540]" />
+              <span>Hire Me For Your Project</span>
             </a>
 
             <a
-              href="#contact"
-              className="inline-flex items-center justify-center gap-2.5 px-6 sm:px-7 py-3.5 min-h-[48px] rounded-full bg-white hover:bg-slate-50 border-2 border-[#0A2540] text-[#0A2540] text-xs sm:text-sm font-bold tracking-wide shadow-sm hover:shadow-md active:scale-95 transition-all duration-200 cursor-pointer group"
+              href="#projects"
+              className="inline-flex items-center justify-center gap-2.5 px-6 sm:px-7 py-3.5 min-h-[48px] rounded-full bg-[#0A2540] hover:bg-[#07192C] text-white text-xs sm:text-sm font-semibold tracking-wide shadow-sm hover:shadow-md active:scale-95 transition-all duration-200 cursor-pointer"
             >
-              <Sparkles className="w-4 h-4 text-amber-500 group-hover:scale-110 transition-transform" />
-              <span>Start a Project</span>
+              <Code2 className="w-4 h-4 text-amber-400" />
+              <span>See Proof Of Work</span>
             </a>
           </div>
 
-          {/* Quick Metrics Bar - Balanced 3 Columns for Mobile */}
+          {/* Quick Metrics Bar - Client Trust Triggers */}
           <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-slate-200/80 w-full grid grid-cols-3 gap-2 sm:gap-4 text-left">
             <div>
-              <div className="font-display font-black text-xl xs:text-2xl sm:text-3xl text-[#0A2540]">20+</div>
-              <div className="text-[10px] sm:text-[11px] font-mono text-slate-500 uppercase tracking-wider mt-0.5 leading-tight">Shipped Works</div>
+              <div className="font-display font-black text-xl xs:text-2xl sm:text-3xl text-[#0A2540]">100%</div>
+              <div className="text-[10px] sm:text-[11px] font-mono text-slate-500 uppercase tracking-wider mt-0.5 leading-tight">IP Code Ownership</div>
             </div>
             <div>
               <div className="font-display font-black text-xl xs:text-2xl sm:text-3xl text-[#0A2540]">&lt; 1s</div>
-              <div className="text-[10px] sm:text-[11px] font-mono text-slate-500 uppercase tracking-wider mt-0.5 leading-tight">Hydration Speed</div>
+              <div className="text-[10px] sm:text-[11px] font-mono text-slate-500 uppercase tracking-wider mt-0.5 leading-tight">Load Time Guarantee</div>
             </div>
             <div>
-              <div className="font-display font-black text-xl xs:text-2xl sm:text-3xl text-emerald-600">100%</div>
-              <div className="text-[10px] sm:text-[11px] font-mono text-slate-500 uppercase tracking-wider mt-0.5 leading-tight">On-Time Delivery</div>
+              <div className="font-display font-black text-xl xs:text-2xl sm:text-3xl text-emerald-600">24h</div>
+              <div className="text-[10px] sm:text-[11px] font-mono text-slate-500 uppercase tracking-wider mt-0.5 leading-tight">Direct Response SLA</div>
             </div>
           </div>
         </motion.div>

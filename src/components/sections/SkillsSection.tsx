@@ -161,13 +161,13 @@ export default function SkillsSection() {
             <div className="max-w-2xl">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-mono font-bold uppercase tracking-wider mb-3 sm:mb-4">
                 <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
-                02 // COMMERCIAL DELIVERABLES
+                02 // CORE SERVICES & SOLUTIONS
               </div>
               <h2 className="font-display font-black text-3xl xs:text-4xl sm:text-5xl lg:text-6xl text-[#0A2540] tracking-tight leading-[1.08]">
-                What I Deliver &amp; Build.
+                Web Services That Grow Your Business.
               </h2>
               <p className="text-slate-600 text-sm sm:text-base lg:text-lg mt-2 sm:mt-3 leading-relaxed">
-                Concrete commercial deliverables engineered to solve business problems, convert visitors, and scale reliably.
+                Whether you need a full web product launched, your current site redesigned, or an e-commerce checkout built, here is what I deliver for your business:
               </p>
             </div>
 

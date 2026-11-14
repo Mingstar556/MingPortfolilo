@@ -100,13 +100,13 @@ export default function ProjectsSection() {
             <div className="max-w-2xl">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 text-amber-900 border border-amber-200/70 text-xs font-mono font-bold uppercase tracking-wider mb-3 sm:mb-4">
                 <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
-                LIVE WEB PROJECTS & REPOSITORIES
+                03 // PROOF OF WORK & LIVE CASE STUDIES
               </div>
               <h2 className="font-display font-black text-3xl xs:text-4xl sm:text-5xl lg:text-6xl text-[#0A2540] tracking-tight leading-[1.08]">
-                Selected Live Works.
+                Real Websites I&apos;ve Built.
               </h2>
               <p className="text-slate-600 text-sm sm:text-base lg:text-lg mt-2 sm:mt-3 leading-relaxed">
-                Real web applications and live open-source repositories deployed to production.
+                Explore real, interactive applications running live in production. Click any preview below to experience the speed, responsiveness, and design quality I deliver for clients.
               </p>
             </div>
 

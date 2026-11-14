@@ -101,15 +101,15 @@ export default function ServicesSection() {
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-mono font-bold uppercase tracking-wider mb-3 sm:mb-4">
                 <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
-                04 // FREELANCE ENGAGEMENT MODELS
+                04 // TRANSPARENT SCOPES &amp; PRICING
               </div>
               <h2 className="font-display font-black text-3xl xs:text-4xl sm:text-5xl lg:text-6xl text-[#0A2540] tracking-tight leading-[1.08]">
-                How We Can Work Together.<br />
-                <span className="text-amber-500">Transparent Scopes &amp; Delivery.</span>
+                Clear Scopes. Predictable Timelines.<br />
+                <span className="text-amber-500">Zero Hidden Costs.</span>
               </h2>
             </div>
             <p className="max-w-md text-slate-600 text-sm sm:text-base leading-relaxed font-sans">
-              Choose the engagement model that best fits your product roadmap. Every project includes direct communication, milestone reviews, and production deployment.
+              Choose the package that fits your business needs. Every engagement includes direct developer access, staging previews, production deployment, and 100% intellectual property handover.
             </p>
           </div>
         </FadeUp>

@@ -25,6 +25,7 @@ export default function Navbar() {
   const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0, opacity: 0 });
 
   interface NavItem {
+    id: string;
     name: string;
     href: string;
     icon: React.ComponentType<{ className?: string }>;
@@ -33,11 +34,11 @@ export default function Navbar() {
   }
 
   const navLinks: NavItem[] = [
-    { name: "About", href: "/#about", icon: User, desc: "Independent Web Developer" },
-    { name: "Deliverables", href: "/#skills", icon: Cpu, desc: "Commercial Solutions & Builds" },
-    { name: "Projects", href: "/#projects", icon: Code2, desc: "Selected Live Works" },
-    { name: "Services", href: "/#services", icon: Briefcase, desc: "Freelance Scopes & Models" },
-    { name: "Contact", href: "/#contact", icon: Mail, desc: "Direct Inquiry Console" },
+    { id: "about", name: "About", href: "/#about", icon: User, desc: "Why Work With Me" },
+    { id: "skills", name: "Services", href: "/#skills", icon: Cpu, desc: "What I Build For You" },
+    { id: "projects", name: "Portfolio", href: "/#projects", icon: Code2, desc: "Live Showcase Work" },
+    { id: "services", name: "Pricing", href: "/#services", icon: Briefcase, desc: "Scopes & Rates" },
+    { id: "contact", name: "Hire Me", href: "/#contact", icon: Mail, desc: "Get A Free Quote" },
   ];
 
   useEffect(() => {
@@ -158,13 +159,13 @@ export default function Navbar() {
               </div>
 
               {navLinks.map((link) => {
-                const navId = link.name.toLowerCase();
+                const navId = link.id;
                 const isActive = activeSection === navId;
                 const isHovered = hoveredNav === navId;
 
                 return (
                   <Link
-                    key={link.name}
+                    key={link.id}
                     href={link.href}
                     data-nav-id={navId}
                     onMouseEnter={() => setHoveredNav(navId)}
