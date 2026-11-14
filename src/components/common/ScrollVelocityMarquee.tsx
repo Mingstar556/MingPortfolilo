@@ -34,7 +34,7 @@ function wrap(min: number, max: number, v: number) {
 
 function MarqueeRow({
   items,
-  baseVelocity = 1.2,
+  baseVelocity = 0.35,
   direction = 1,
   className = "",
 }: MarqueeRowProps) {
@@ -42,11 +42,11 @@ function MarqueeRow({
   const { scrollY } = useScroll();
   const scrollVelocity = useVelocity(scrollY);
   const smoothVelocity = useSpring(scrollVelocity, {
-    damping: 50,
-    stiffness: 400,
+    damping: 60,
+    stiffness: 300,
   });
 
-  const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, 5], {
+  const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, 2.5], {
     clamp: false,
   });
 
@@ -55,12 +55,13 @@ function MarqueeRow({
   const directionFactor = useRef<number>(direction);
 
   useAnimationFrame((_, delta) => {
-    let moveBy = directionFactor.current * baseVelocity * (delta / 1000) * 12;
+    // Slower, smooth and legible pace so text is comfortably readable
+    let moveBy = directionFactor.current * baseVelocity * (delta / 1000) * 5;
 
-    // React dynamically to user scroll speed and direction
+    // React gently to user scroll speed and direction
     const currentVelocity = velocityFactor.get();
     if (currentVelocity !== 0) {
-      moveBy += currentVelocity * (delta / 1000) * 9 * directionFactor.current;
+      moveBy += currentVelocity * (delta / 1000) * 3 * directionFactor.current;
     }
 
     baseX.set(baseX.get() + moveBy);
@@ -265,17 +266,17 @@ export default function ScrollVelocityMarquee() {
       <div className="absolute top-1/2 right-10 -translate-y-1/2 w-80 h-24 bg-cyan-500/20 rounded-full blur-3xl pointer-events-none animate-pulse" style={{ animationDelay: "1.5s" }} />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-20 bg-purple-500/15 rounded-full blur-3xl pointer-events-none" />
 
-      {/* Row 1: Leftward Scroll with kinetic velocity */}
+      {/* Row 1: Leftward Scroll at a gentle, legible speed */}
       <MarqueeRow
         items={row1}
-        baseVelocity={-0.9}
+        baseVelocity={-0.35}
         direction={-1}
       />
 
       {/* Row 2: Rightward Counter-Flow Scroll */}
       <MarqueeRow
         items={row2}
-        baseVelocity={0.9}
+        baseVelocity={0.35}
         direction={1}
       />
     </div>
